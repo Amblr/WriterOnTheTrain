@@ -1,0 +1,617 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6D19A6E01871C74400BDE5B0 /* WTUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D19A6DF1871C74400BDE5B0 /* WTUtils.m */; };
+		6D19A6E31871C89D00BDE5B0 /* WTJourney.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D19A6E21871C89D00BDE5B0 /* WTJourney.m */; };
+		6D19A6E51871D56400BDE5B0 /* blobs.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D19A6E41871D56400BDE5B0 /* blobs.json */; };
+		6D19A6EB1871D8E200BDE5B0 /* WTContentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D19A6EA1871D8E200BDE5B0 /* WTContentListViewController.m */; };
+		6D4B67D0186F7D080019B046 /* Main-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D4B67CF186F7D080019B046 /* Main-iPad.storyboard */; };
+		6D4B67D3186F7DF10019B046 /* WTStoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B67D2186F7DF10019B046 /* WTStoryManager.m */; };
+		6D4B67D7187070340019B046 /* WTContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B67D6187070340019B046 /* WTContentViewController.m */; };
+		6D4B67DA187073630019B046 /* WTTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B67D9187073630019B046 /* WTTabBarController.m */; };
+		6D4B67DF18707AA00019B046 /* WTJourneyChooserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B67DE18707AA00019B046 /* WTJourneyChooserController.m */; };
+		6D4B67E1187084570019B046 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D4B67E0187084570019B046 /* stations.json */; };
+		6DA56F58186DB35D007D2ABA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA56F57186DB35C007D2ABA /* Foundation.framework */; };
+		6DA56F5A186DB35D007D2ABA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA56F59186DB35D007D2ABA /* CoreGraphics.framework */; };
+		6DA56F5C186DB35D007D2ABA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA56F5B186DB35D007D2ABA /* UIKit.framework */; };
+		6DA56F62186DB35D007D2ABA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DA56F60186DB35D007D2ABA /* InfoPlist.strings */; };
+		6DA56F64186DB35D007D2ABA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA56F63186DB35D007D2ABA /* main.m */; };
+		6DA56F68186DB35D007D2ABA /* WTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA56F67186DB35D007D2ABA /* WTAppDelegate.m */; };
+		6DA56F6B186DB35D007D2ABA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA56F69186DB35D007D2ABA /* Main.storyboard */; };
+		6DA56F6E186DB35D007D2ABA /* WTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA56F6D186DB35D007D2ABA /* WTMapViewController.m */; };
+		6DA56F73186DB35D007D2ABA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DA56F72186DB35D007D2ABA /* Images.xcassets */; };
+		6DA56F7A186DB35D007D2ABA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA56F79186DB35D007D2ABA /* XCTest.framework */; };
+		6DA56F7B186DB35D007D2ABA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA56F57186DB35C007D2ABA /* Foundation.framework */; };
+		6DA56F7C186DB35D007D2ABA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA56F5B186DB35D007D2ABA /* UIKit.framework */; };
+		6DA56F84186DB35D007D2ABA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DA56F82186DB35D007D2ABA /* InfoPlist.strings */; };
+		6DA56F86186DB35D007D2ABA /* Writer_on_the_TrainTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA56F85186DB35D007D2ABA /* Writer_on_the_TrainTests.m */; };
+		6DA56F90186DB3DB007D2ABA /* libAmblr-Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA56F8F186DB3DB007D2ABA /* libAmblr-Core.a */; };
+		6DA56F94186DB551007D2ABA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA56F93186DB551007D2ABA /* AVFoundation.framework */; };
+		6DA56F96186DB558007D2ABA /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA56F95186DB558007D2ABA /* CoreAudio.framework */; };
+		6DA56F98186DB55D007D2ABA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA56F97186DB55D007D2ABA /* CoreLocation.framework */; };
+		6DA56F9A186DB569007D2ABA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA56F99186DB569007D2ABA /* MapKit.framework */; };
+		6DA56F9D186DB5A4007D2ABA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA56F9C186DB5A4007D2ABA /* AudioToolbox.framework */; };
+		6DA56FA0186DB679007D2ABA /* WTContentBlob.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA56F9F186DB679007D2ABA /* WTContentBlob.m */; };
+		6DA56FA1186DB679007D2ABA /* WTContentBlob.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA56F9F186DB679007D2ABA /* WTContentBlob.m */; };
+		6DA56FA8186DBC6D007D2ABA /* WTNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA56FA7186DBC6D007D2ABA /* WTNode.m */; };
+		6DA56FA9186DBC6D007D2ABA /* WTNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA56FA7186DBC6D007D2ABA /* WTNode.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6DA56F7D186DB35D007D2ABA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DA56F4C186DB35C007D2ABA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DA56F53186DB35C007D2ABA;
+			remoteInfo = "Writer on the Train";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6D19A6DE1871C74400BDE5B0 /* WTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTUtils.h; sourceTree = "<group>"; };
+		6D19A6DF1871C74400BDE5B0 /* WTUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTUtils.m; sourceTree = "<group>"; };
+		6D19A6E11871C89D00BDE5B0 /* WTJourney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTJourney.h; sourceTree = "<group>"; };
+		6D19A6E21871C89D00BDE5B0 /* WTJourney.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTJourney.m; sourceTree = "<group>"; };
+		6D19A6E41871D56400BDE5B0 /* blobs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = blobs.json; path = ../../../BundledMedia/WriterOnTheTrain/blobs.json; sourceTree = "<group>"; };
+		6D19A6E91871D8E200BDE5B0 /* WTContentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTContentListViewController.h; sourceTree = "<group>"; };
+		6D19A6EA1871D8E200BDE5B0 /* WTContentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTContentListViewController.m; sourceTree = "<group>"; };
+		6D4B67CF186F7D080019B046 /* Main-iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Main-iPad.storyboard"; sourceTree = "<group>"; };
+		6D4B67D1186F7DF10019B046 /* WTStoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTStoryManager.h; sourceTree = "<group>"; };
+		6D4B67D2186F7DF10019B046 /* WTStoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTStoryManager.m; sourceTree = "<group>"; };
+		6D4B67D4186F892E0019B046 /* WTConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTConfiguration.h; sourceTree = "<group>"; };
+		6D4B67D5187070340019B046 /* WTContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTContentViewController.h; sourceTree = "<group>"; };
+		6D4B67D6187070340019B046 /* WTContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTContentViewController.m; sourceTree = "<group>"; };
+		6D4B67D8187073630019B046 /* WTTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTabBarController.h; sourceTree = "<group>"; };
+		6D4B67D9187073630019B046 /* WTTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTabBarController.m; sourceTree = "<group>"; };
+		6D4B67DD18707AA00019B046 /* WTJourneyChooserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTJourneyChooserController.h; sourceTree = "<group>"; };
+		6D4B67DE18707AA00019B046 /* WTJourneyChooserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTJourneyChooserController.m; sourceTree = "<group>"; };
+		6D4B67E0187084570019B046 /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
+		6DA56F54186DB35C007D2ABA /* Writer on the Train.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Writer on the Train.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DA56F57186DB35C007D2ABA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6DA56F59186DB35D007D2ABA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6DA56F5B186DB35D007D2ABA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6DA56F5F186DB35D007D2ABA /* Writer on the Train-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Writer on the Train-Info.plist"; sourceTree = "<group>"; };
+		6DA56F61186DB35D007D2ABA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6DA56F63186DB35D007D2ABA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6DA56F65186DB35D007D2ABA /* Writer on the Train-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Writer on the Train-Prefix.pch"; sourceTree = "<group>"; };
+		6DA56F66186DB35D007D2ABA /* WTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTAppDelegate.h; sourceTree = "<group>"; };
+		6DA56F67186DB35D007D2ABA /* WTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTAppDelegate.m; sourceTree = "<group>"; };
+		6DA56F6A186DB35D007D2ABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6DA56F6C186DB35D007D2ABA /* WTMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTMapViewController.h; sourceTree = "<group>"; };
+		6DA56F6D186DB35D007D2ABA /* WTMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTMapViewController.m; sourceTree = "<group>"; };
+		6DA56F72186DB35D007D2ABA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6DA56F78186DB35D007D2ABA /* Writer on the TrainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Writer on the TrainTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DA56F79186DB35D007D2ABA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		6DA56F81186DB35D007D2ABA /* Writer on the TrainTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Writer on the TrainTests-Info.plist"; sourceTree = "<group>"; };
+		6DA56F83186DB35D007D2ABA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6DA56F85186DB35D007D2ABA /* Writer_on_the_TrainTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Writer_on_the_TrainTests.m; sourceTree = "<group>"; };
+		6DA56F8F186DB3DB007D2ABA /* libAmblr-Core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libAmblr-Core.a"; path = "../../Amblr-Core/build/Debug-iphoneos/libAmblr-Core.a"; sourceTree = "<group>"; };
+		6DA56F91186DB54E007D2ABA /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		6DA56F93186DB551007D2ABA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6DA56F95186DB558007D2ABA /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		6DA56F97186DB55D007D2ABA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6DA56F99186DB569007D2ABA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		6DA56F9C186DB5A4007D2ABA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6DA56F9E186DB679007D2ABA /* WTContentBlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTContentBlob.h; sourceTree = "<group>"; };
+		6DA56F9F186DB679007D2ABA /* WTContentBlob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTContentBlob.m; sourceTree = "<group>"; };
+		6DA56FA6186DBC6D007D2ABA /* WTNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNode.h; sourceTree = "<group>"; };
+		6DA56FA7186DBC6D007D2ABA /* WTNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNode.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6DA56F51186DB35C007D2ABA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DA56F9D186DB5A4007D2ABA /* AudioToolbox.framework in Frameworks */,
+				6DA56F9A186DB569007D2ABA /* MapKit.framework in Frameworks */,
+				6DA56F98186DB55D007D2ABA /* CoreLocation.framework in Frameworks */,
+				6DA56F96186DB558007D2ABA /* CoreAudio.framework in Frameworks */,
+				6DA56F94186DB551007D2ABA /* AVFoundation.framework in Frameworks */,
+				6DA56F90186DB3DB007D2ABA /* libAmblr-Core.a in Frameworks */,
+				6DA56F5A186DB35D007D2ABA /* CoreGraphics.framework in Frameworks */,
+				6DA56F5C186DB35D007D2ABA /* UIKit.framework in Frameworks */,
+				6DA56F58186DB35D007D2ABA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DA56F75186DB35D007D2ABA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DA56F7A186DB35D007D2ABA /* XCTest.framework in Frameworks */,
+				6DA56F7C186DB35D007D2ABA /* UIKit.framework in Frameworks */,
+				6DA56F7B186DB35D007D2ABA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6D4B67CE186F7CC30019B046 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		6D4B67DB187077A10019B046 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6D4B67D8187073630019B046 /* WTTabBarController.h */,
+				6D4B67D9187073630019B046 /* WTTabBarController.m */,
+				6DA56F6C186DB35D007D2ABA /* WTMapViewController.h */,
+				6DA56F6D186DB35D007D2ABA /* WTMapViewController.m */,
+				6D4B67D5187070340019B046 /* WTContentViewController.h */,
+				6D4B67D6187070340019B046 /* WTContentViewController.m */,
+				6D4B67DD18707AA00019B046 /* WTJourneyChooserController.h */,
+				6D4B67DE18707AA00019B046 /* WTJourneyChooserController.m */,
+				6D19A6E91871D8E200BDE5B0 /* WTContentListViewController.h */,
+				6D19A6EA1871D8E200BDE5B0 /* WTContentListViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		6D4B67DC187077AF0019B046 /* Story Content */ = {
+			isa = PBXGroup;
+			children = (
+				6D4B67E0187084570019B046 /* stations.json */,
+				6D19A6E41871D56400BDE5B0 /* blobs.json */,
+				6DA56FA6186DBC6D007D2ABA /* WTNode.h */,
+				6DA56FA7186DBC6D007D2ABA /* WTNode.m */,
+				6D19A6E11871C89D00BDE5B0 /* WTJourney.h */,
+				6D19A6E21871C89D00BDE5B0 /* WTJourney.m */,
+				6D4B67D1186F7DF10019B046 /* WTStoryManager.h */,
+				6D4B67D2186F7DF10019B046 /* WTStoryManager.m */,
+				6DA56F9E186DB679007D2ABA /* WTContentBlob.h */,
+				6DA56F9F186DB679007D2ABA /* WTContentBlob.m */,
+			);
+			name = "Story Content";
+			sourceTree = "<group>";
+		};
+		6DA56F4B186DB35C007D2ABA = {
+			isa = PBXGroup;
+			children = (
+				6DA56F5D186DB35D007D2ABA /* Writer on the Train */,
+				6DA56F7F186DB35D007D2ABA /* Writer on the TrainTests */,
+				6DA56F56186DB35C007D2ABA /* Frameworks */,
+				6DA56F55186DB35C007D2ABA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6DA56F55186DB35C007D2ABA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6DA56F54186DB35C007D2ABA /* Writer on the Train.app */,
+				6DA56F78186DB35D007D2ABA /* Writer on the TrainTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6DA56F56186DB35C007D2ABA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6DA56F9C186DB5A4007D2ABA /* AudioToolbox.framework */,
+				6DA56F99186DB569007D2ABA /* MapKit.framework */,
+				6DA56F97186DB55D007D2ABA /* CoreLocation.framework */,
+				6DA56F95186DB558007D2ABA /* CoreAudio.framework */,
+				6DA56F93186DB551007D2ABA /* AVFoundation.framework */,
+				6DA56F91186DB54E007D2ABA /* AudioUnit.framework */,
+				6DA56F8F186DB3DB007D2ABA /* libAmblr-Core.a */,
+				6DA56F57186DB35C007D2ABA /* Foundation.framework */,
+				6DA56F59186DB35D007D2ABA /* CoreGraphics.framework */,
+				6DA56F5B186DB35D007D2ABA /* UIKit.framework */,
+				6DA56F79186DB35D007D2ABA /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6DA56F5D186DB35D007D2ABA /* Writer on the Train */ = {
+			isa = PBXGroup;
+			children = (
+				6D4B67CE186F7CC30019B046 /* iPad */,
+				6DA56F66186DB35D007D2ABA /* WTAppDelegate.h */,
+				6DA56F67186DB35D007D2ABA /* WTAppDelegate.m */,
+				6D4B67D4186F892E0019B046 /* WTConfiguration.h */,
+				6DA56F69186DB35D007D2ABA /* Main.storyboard */,
+				6D4B67CF186F7D080019B046 /* Main-iPad.storyboard */,
+				6D4B67DC187077AF0019B046 /* Story Content */,
+				6D4B67DB187077A10019B046 /* View Controllers */,
+				6DA56F72186DB35D007D2ABA /* Images.xcassets */,
+				6DA56F5E186DB35D007D2ABA /* Supporting Files */,
+			);
+			path = "Writer on the Train";
+			sourceTree = "<group>";
+		};
+		6DA56F5E186DB35D007D2ABA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6D19A6DE1871C74400BDE5B0 /* WTUtils.h */,
+				6D19A6DF1871C74400BDE5B0 /* WTUtils.m */,
+				6DA56F5F186DB35D007D2ABA /* Writer on the Train-Info.plist */,
+				6DA56F60186DB35D007D2ABA /* InfoPlist.strings */,
+				6DA56F63186DB35D007D2ABA /* main.m */,
+				6DA56F65186DB35D007D2ABA /* Writer on the Train-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6DA56F7F186DB35D007D2ABA /* Writer on the TrainTests */ = {
+			isa = PBXGroup;
+			children = (
+				6DA56F85186DB35D007D2ABA /* Writer_on_the_TrainTests.m */,
+				6DA56F80186DB35D007D2ABA /* Supporting Files */,
+			);
+			path = "Writer on the TrainTests";
+			sourceTree = "<group>";
+		};
+		6DA56F80186DB35D007D2ABA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6DA56F81186DB35D007D2ABA /* Writer on the TrainTests-Info.plist */,
+				6DA56F82186DB35D007D2ABA /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6DA56F53186DB35C007D2ABA /* Writer on the Train */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DA56F89186DB35D007D2ABA /* Build configuration list for PBXNativeTarget "Writer on the Train" */;
+			buildPhases = (
+				6DA56F50186DB35C007D2ABA /* Sources */,
+				6DA56F51186DB35C007D2ABA /* Frameworks */,
+				6DA56F52186DB35C007D2ABA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Writer on the Train";
+			productName = "Writer on the Train";
+			productReference = 6DA56F54186DB35C007D2ABA /* Writer on the Train.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6DA56F77186DB35D007D2ABA /* Writer on the TrainTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DA56F8C186DB35D007D2ABA /* Build configuration list for PBXNativeTarget "Writer on the TrainTests" */;
+			buildPhases = (
+				6DA56F74186DB35D007D2ABA /* Sources */,
+				6DA56F75186DB35D007D2ABA /* Frameworks */,
+				6DA56F76186DB35D007D2ABA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6DA56F7E186DB35D007D2ABA /* PBXTargetDependency */,
+			);
+			name = "Writer on the TrainTests";
+			productName = "Writer on the TrainTests";
+			productReference = 6DA56F78186DB35D007D2ABA /* Writer on the TrainTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6DA56F4C186DB35C007D2ABA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = WT;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Joe Zuntz";
+				TargetAttributes = {
+					6DA56F53186DB35C007D2ABA = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					6DA56F77186DB35D007D2ABA = {
+						TestTargetID = 6DA56F53186DB35C007D2ABA;
+					};
+				};
+			};
+			buildConfigurationList = 6DA56F4F186DB35C007D2ABA /* Build configuration list for PBXProject "Writer on the Train" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6DA56F4B186DB35C007D2ABA;
+			productRefGroup = 6DA56F55186DB35C007D2ABA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6DA56F53186DB35C007D2ABA /* Writer on the Train */,
+				6DA56F77186DB35D007D2ABA /* Writer on the TrainTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6DA56F52186DB35C007D2ABA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DA56F73186DB35D007D2ABA /* Images.xcassets in Resources */,
+				6DA56F62186DB35D007D2ABA /* InfoPlist.strings in Resources */,
+				6DA56F6B186DB35D007D2ABA /* Main.storyboard in Resources */,
+				6D4B67D0186F7D080019B046 /* Main-iPad.storyboard in Resources */,
+				6D19A6E51871D56400BDE5B0 /* blobs.json in Resources */,
+				6D4B67E1187084570019B046 /* stations.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DA56F76186DB35D007D2ABA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DA56F84186DB35D007D2ABA /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6DA56F50186DB35C007D2ABA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D4B67DA187073630019B046 /* WTTabBarController.m in Sources */,
+				6D19A6E31871C89D00BDE5B0 /* WTJourney.m in Sources */,
+				6DA56F64186DB35D007D2ABA /* main.m in Sources */,
+				6D19A6E01871C74400BDE5B0 /* WTUtils.m in Sources */,
+				6D4B67D7187070340019B046 /* WTContentViewController.m in Sources */,
+				6D19A6EB1871D8E200BDE5B0 /* WTContentListViewController.m in Sources */,
+				6DA56FA8186DBC6D007D2ABA /* WTNode.m in Sources */,
+				6DA56F68186DB35D007D2ABA /* WTAppDelegate.m in Sources */,
+				6DA56FA0186DB679007D2ABA /* WTContentBlob.m in Sources */,
+				6D4B67D3186F7DF10019B046 /* WTStoryManager.m in Sources */,
+				6DA56F6E186DB35D007D2ABA /* WTMapViewController.m in Sources */,
+				6D4B67DF18707AA00019B046 /* WTJourneyChooserController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DA56F74186DB35D007D2ABA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DA56FA9186DBC6D007D2ABA /* WTNode.m in Sources */,
+				6DA56F86186DB35D007D2ABA /* Writer_on_the_TrainTests.m in Sources */,
+				6DA56FA1186DB679007D2ABA /* WTContentBlob.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6DA56F7E186DB35D007D2ABA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6DA56F53186DB35C007D2ABA /* Writer on the Train */;
+			targetProxy = 6DA56F7D186DB35D007D2ABA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6DA56F60186DB35D007D2ABA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DA56F61186DB35D007D2ABA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6DA56F69186DB35D007D2ABA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DA56F6A186DB35D007D2ABA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6DA56F82186DB35D007D2ABA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DA56F83186DB35D007D2ABA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6DA56F87186DB35D007D2ABA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		6DA56F88186DB35D007D2ABA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6DA56F8A186DB35D007D2ABA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Writer on the Train/Writer on the Train-Prefix.pch";
+				INFOPLIST_FILE = "Writer on the Train/Writer on the Train-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "/Users/jaz/src/amblr/projects/Amblr-Core/Amblr-Core";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6DA56F8B186DB35D007D2ABA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Writer on the Train/Writer on the Train-Prefix.pch";
+				INFOPLIST_FILE = "Writer on the Train/Writer on the Train-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "/Users/jaz/src/amblr/projects/Amblr-Core/Amblr-Core";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		6DA56F8D186DB35D007D2ABA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Writer on the Train.app/Writer on the Train";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Writer on the Train/Writer on the Train-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Writer on the TrainTests/Writer on the TrainTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		6DA56F8E186DB35D007D2ABA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Writer on the Train.app/Writer on the Train";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Writer on the Train/Writer on the Train-Prefix.pch";
+				INFOPLIST_FILE = "Writer on the TrainTests/Writer on the TrainTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6DA56F4F186DB35C007D2ABA /* Build configuration list for PBXProject "Writer on the Train" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DA56F87186DB35D007D2ABA /* Debug */,
+				6DA56F88186DB35D007D2ABA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6DA56F89186DB35D007D2ABA /* Build configuration list for PBXNativeTarget "Writer on the Train" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DA56F8A186DB35D007D2ABA /* Debug */,
+				6DA56F8B186DB35D007D2ABA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6DA56F8C186DB35D007D2ABA /* Build configuration list for PBXNativeTarget "Writer on the TrainTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DA56F8D186DB35D007D2ABA /* Debug */,
+				6DA56F8E186DB35D007D2ABA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6DA56F4C186DB35C007D2ABA /* Project object */;
+}

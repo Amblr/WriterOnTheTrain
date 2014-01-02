@@ -15,6 +15,7 @@
 @synthesize travelDirection;
 @synthesize days;
 @synthesize windowDirection;
+@synthesize locationSpecific;
 @synthesize journeySegment;
 
 +(WTContentBlob*) contentBlobFromDictionary:(NSDictionary*) dictionary
@@ -54,6 +55,8 @@
     if (journeySegmentNumber==nil) blob.journeySegment = WTJourneySegmentAny;
     else blob.journeySegment = (WTJourneySegment) journeySegmentNumber.intValue;
 
+    // We will not find this out until later.
+    blob.locationSpecific = NO;
     
     return blob;
 }

@@ -18,8 +18,17 @@
 @import CoreLocation;
 
 #define HIGH_RES_LOCATION_INTERVAL_MINUTES 10
-#define DELAY_FOR_NONLOCATION_TRIGGER_MINUTES 0.5
-#define MINUTES 60.0
+#define DELAY_FOR_NONLOCATION_TRIGGER_MINUTES 10
+
+// JAZ Can change this to simulate
+#define MINUTES 1.0
+#define WTDEBUG YES
+
+#ifdef WTDEBUG
+#   define WTDEBUGLOG(fmt, ...) NSLog(fmt, ##__VA_ARGS__)
+#else
+#   define WTDEBUGLOG(...)
+#endif
 
 
 
@@ -32,6 +41,9 @@
 @synthesize homeCoordinate;
 @synthesize workCoordinate;
 @synthesize journey;
+@synthesize playedBlobs;
+@synthesize scheduledContentBlob;
+
 
 #pragma mark -
 #pragma mark Life cycle and delegate
@@ -42,6 +54,8 @@
     if (self){
         locationManager = [[CLLocationManager alloc] init];
         locationManager.delegate = self;
+        locationManager.activityType = CLActivityTypeOtherNavigation;
+        
         highResolutionLocationInterval = HIGH_RES_LOCATION_INTERVAL_MINUTES * MINUTES;
         inHighResolutionRegion = NO;
         
@@ -69,9 +83,19 @@
             [contentBlobs addObject:blob];
             [blobStatus setObject:[NSNumber numberWithInt:0] forKey:blob.chapter];
         }
-    
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(relaunch:) name:UIApplicationDidBecomeActiveNotification object:nil];
     }
+    
     return self;
+}
+
+-(void) relaunch:(NSNotification*) notification
+{
+    if (self.scheduledContentBlob){
+        [self displayContent:self.scheduledContentBlob];
+        self.scheduledContentBlob = nil;
+    }
+        
 }
 
 -(void) nodeSource:(L1Scenario*) nodeScenario didReceiveNodes:(NSDictionary*) nodeDictionary
@@ -133,6 +157,8 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
+    
+    NSLog(@"Location update (%@ res)", locationManager.desiredAccuracy==kCLLocationAccuracyBest?@"High":@"Low");
     CLLocation * currentLocation = [locations lastObject];
     
     // If we do not know the travel direction yet then figure it out
@@ -165,7 +191,9 @@
 -(BOOL) contentBlob:(WTContentBlob*) blob isValidAtCoordinate:(CLLocationCoordinate2D) coordinate
 {
     // Check if blob has already been used
-    if ([playedBlobs containsObject:blob.chapter]) return NO;
+    if ([playedBlobs containsObject:blob.chapter]) {
+        return NO;
+    }
     
     WTDayOfWeek currentDayOfWeek = WTCurrentDayOfWeek();
     if (!(currentDayOfWeek & blob.days)) return NO;
@@ -179,7 +207,10 @@
 {
     for (WTContentBlob* blob in contentBlobs){
         if (![blob.title isEqualToString:name]) continue;
-        if ([self contentBlob:blob isValidAtCoordinate:coordinate]) return blob;
+        if ([self contentBlob:blob isValidAtCoordinate:coordinate]){
+            blob.locationSpecific = YES;
+            return blob;
+        }
     }
     return nil;
 }
@@ -187,7 +218,13 @@
 -(WTContentBlob*) nextValidContentAtCoordinate:(CLLocationCoordinate2D) coordinate
 {
     for (WTContentBlob* blob in contentBlobs){
-        if ([self contentBlob:blob isValidAtCoordinate:coordinate]) return blob;
+        if ([self contentBlob:blob isValidAtCoordinate:coordinate]) {
+            WTDEBUGLOG(@"Blob IS valid %@", blob);
+            return blob;
+        }
+        else{
+            WTDEBUGLOG(@"Blob not valid %@", blob);
+        }
     }
     return nil;
 }
@@ -216,15 +253,35 @@
         NSTimeInterval elapsed = -[journey.journeyStartTime timeIntervalSinceNow];
         if (elapsed>DELAY_FOR_NONLOCATION_TRIGGER_MINUTES*MINUTES){
             content = [self nextValidContentAtCoordinate:coordinate];
+            haveShownNonlocationContent = YES;
         }
     }
     return content;
 }
 
--(void) displayContent:(WTContentBlob *)content
+-(WTContentBlob*) blobForChapter:(NSDecimalNumber*) chapter
 {
-    [playedBlobs addObject:content.chapter];
-    [delegate displayContent:content];
+    for (WTContentBlob* blob in contentBlobs){
+        if ([blob.chapter isEqualToNumber:chapter]) return blob;
+    }
+    return nil;
+}
+
+-(void) displayContentFromBackground:(NSDictionary*) info
+{
+    // in this case we take responsibilty
+    // for telling the story manager the blob is done.
+    NSDecimalNumber * chapter = [info objectForKey:@"blob"];
+    WTContentBlob * blob = [self blobForChapter:chapter];
+    if (blob) [self displayContent:blob];
+}
+
+
+-(void) displayContent:(WTContentBlob *)blob
+{
+    BOOL played = [delegate displayContent:blob];
+    if (played) [playedBlobs addObject:blob.chapter];
+    else self.scheduledContentBlob = blob;
 }
 
 -(NSInteger) contentCount
@@ -238,6 +295,11 @@
     if ([playedBlobs containsObject:blob.chapter]) return blob.title;
     else return [NSString  stringWithFormat:@"--- %@ ---", blob.title];
     
+}
+
+-(WTContentBlob*) contentAtIndex:(NSInteger) index
+{
+    return [contentBlobs objectAtIndex:index];
 }
 
 @end

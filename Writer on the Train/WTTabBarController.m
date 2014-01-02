@@ -55,9 +55,23 @@
     }
 }
 
--(void) displayContent:(WTContentBlob*) blob
+
+-(BOOL) displayContent:(WTContentBlob*) blob
 {
-    [self performSegueWithIdentifier:@"content-presentation" sender:blob];
+    
+    if ([[UIApplication sharedApplication] applicationState]==UIApplicationStateActive){
+        [self performSegueWithIdentifier:@"content-presentation" sender:blob];
+        return YES;
+    }
+    else{
+        UILocalNotification * note =  [[UILocalNotification alloc] init];
+        note.alertBody = @"You have reached a place in the written world.";
+        note.alertAction = @"Experience";
+        note.userInfo = [NSDictionary dictionaryWithObject:blob.chapter forKey:@"blob"];
+        [[UIApplication sharedApplication] presentLocalNotificationNow:note];
+        return NO;
+    }
+    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

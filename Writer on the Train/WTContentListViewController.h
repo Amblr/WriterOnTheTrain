@@ -11,6 +11,7 @@
 @interface WTContentListViewController : UITableViewController
 {
     WTStoryManager * storyManager;
+    IBOutlet UITableView * contentTableListView;;
 }
 @property (retain) WTStoryManager * storyManager;
 @end

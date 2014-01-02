@@ -56,6 +56,7 @@ typedef int WTJourneySegment;
     NSString * title;
     NSString * text;
     NSDecimalNumber * chapter;
+    BOOL locationSpecific;
 }
 
 +(WTContentBlob*) contentBlobFromDictionary:(NSDictionary*) dictionary;
@@ -64,6 +65,7 @@ typedef int WTJourneySegment;
 @property (assign) WTWindowDirection windowDirection;
 @property (assign) WTDayOfWeek days;
 @property (assign) WTJourneySegment journeySegment;
+@property (assign) BOOL locationSpecific;
 
 @property (retain) NSString * title;
 @property (retain) NSString * text;

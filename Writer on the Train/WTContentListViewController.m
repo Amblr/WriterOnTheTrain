@@ -8,6 +8,7 @@
 
 #import "WTContentListViewController.h"
 #import "WTTabBarController.h"
+#import "WTContentViewController.h"
 
 @interface WTContentListViewController ()
 
@@ -33,10 +34,16 @@
     self.storyManager = root.storyManager;
     
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [contentTableListView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,60 +72,38 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = [self.storyManager titleForContentAtIndex:indexPath.row];
-    
+    NSString * title =[self.storyManager titleForContentAtIndex:indexPath.row];
+    if ([title characterAtIndex:0]=='-'){
+        UIImage * line = [UIImage imageNamed:@"line"];
+        cell.imageView.image = line;
+        
+    }
+    else{
+        cell.textLabel.text = title;
+    }
+
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    WTContentBlob * blob = [storyManager contentAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"content-presentation-list" sender:blob];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
 #pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [super prepareForSegue:segue sender:sender];
+    if ([segue.identifier isEqualToString:@"content-presentation-list"]){
+        WTContentViewController * destination = (WTContentViewController *) segue.destinationViewController;
+        WTContentBlob * blob = (WTContentBlob*) sender;
+        [destination setContentBlob:blob];
+    }
 }
 
- */
 
 @end

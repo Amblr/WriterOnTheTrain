@@ -37,7 +37,7 @@
 -(void) viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    mapView.showsUserLocation = NO;
+    mapView.showsUserLocation = YES;
 }
 
 

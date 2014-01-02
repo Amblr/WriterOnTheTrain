@@ -16,7 +16,7 @@
 @protocol WTStoryManagerDelegate <NSObject>
 
 -(void) chooseStationRequest;
--(void) displayContent:(WTContentBlob*) content;
+-(BOOL) displayContent:(WTContentBlob*) content;
 
 @end
 
@@ -46,6 +46,9 @@
     NSMutableArray * contentBlobs;
     NSMutableDictionary * blobStatus;
     NSMutableSet * playedBlobs;
+    
+    WTContentBlob * scheduledContentBlob;
+
 
 }
 // This class keeps track of the progress through the journey
@@ -68,7 +71,12 @@
 -(WTContentBlob*) nextValidContentAtCoordinate:(CLLocationCoordinate2D) coordinate;
 -(NSInteger) contentCount;
 -(NSString*) titleForContentAtIndex:(NSInteger) index;
+-(WTContentBlob*) contentAtIndex:(NSInteger) index;
+-(void) displayContentFromBackground:(NSDictionary*) info;
 
+@property (retain) WTContentBlob * scheduledContentBlob;
+
+@property (readonly) NSMutableSet * playedBlobs;
 @property (assign) CLLocationCoordinate2D homeCoordinate;
 @property (assign) CLLocationCoordinate2D workCoordinate;
 @property (retain) WTJourney * journey;

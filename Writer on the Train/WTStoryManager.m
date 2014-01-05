@@ -187,6 +187,13 @@
 #pragma mark -
 #pragma mark Content Selection
 
++(BOOL) isMorning
+{
+    NSDateComponents * components = [[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:[NSDate date]];
+    NSInteger h = components.hour;
+    return (h>0 && h<12);
+}
+
 
 -(BOOL) contentBlob:(WTContentBlob*) blob isValidAtCoordinate:(CLLocationCoordinate2D) coordinate
 {
@@ -196,6 +203,8 @@
     }
     
     WTDayOfWeek currentDayOfWeek = WTCurrentDayOfWeek();
+    WTTimeOfDay timeOfDay = [WTStoryManager isMorning] ? WTTimeOfDayMorning : WTTimeOfDayAfternoon;
+    if ((blob.timeOfDay!=WTTimeOfDayAny) && (blob.timeOfDay!=timeOfDay)) return NO;
     if (!(currentDayOfWeek & blob.days)) return NO;
     if ((blob.travelDirection != journey.travelDirection) && (blob.travelDirection!=WTTravelDirectionAny)) return NO;
     if ((blob.journeySegment!=journey.journeySegment) && (blob.journeySegment!=WTJourneySegmentAny)) return NO;

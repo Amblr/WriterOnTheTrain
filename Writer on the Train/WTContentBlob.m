@@ -50,6 +50,17 @@
     else if ([windowDirectionString isEqualToString:@"either"]) blob.windowDirection = WTWindowDirectionEither;
     else NSAssert(NO, @"Invalid window direction string %@", windowDirectionString);
 
+    NSString * timeOfDayString = [dictionary objectForKey:@"time"];
+    if (timeOfDayString==nil) blob.timeOfDay = WTTimeOfDayAny;
+    else if ([timeOfDayString isEqualToString:@"any"]) blob.timeOfDay = WTTimeOfDayAny;
+    else if ([timeOfDayString isEqualToString:@"morning"]) blob.timeOfDay = WTTimeOfDayMorning;
+    else if ([timeOfDayString isEqualToString:@"afternoon"]) blob.timeOfDay = WTTimeOfDayAfternoon;
+    else NSAssert(NO, @"Invalid time of day string %@", timeOfDayString);
+
+
+    
+
+    
     //Valid journey segment
     NSNumber * journeySegmentNumber = [dictionary objectForKey:@"segment"];
     if (journeySegmentNumber==nil) blob.journeySegment = WTJourneySegmentAny;

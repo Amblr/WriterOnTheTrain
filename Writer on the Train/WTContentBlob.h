@@ -37,6 +37,12 @@ typedef enum WTWindowDirection{
     WTWindowDirectionEither=0,
 } WTWindowDirection;
 
+typedef enum WTTimeOfDay{
+    WTTimeOfDayAny=0,
+    WTTimeOfDayMorning=1,
+    WTTimeOfDayAfternoon=2,
+} WTTimeOfDay;
+
 typedef int WTJourneySegment;
 #define WTJourneySegmentAny 0
 #define WTNumberOfJourneySegments 20
@@ -51,6 +57,7 @@ typedef int WTJourneySegment;
     WTWindowDirection windowDirection;
     WTJourneySegment journeySegment;
     WTDayOfWeek days;
+    WTTimeOfDay timeOfDay;
     
     //Content
     NSString * title;
@@ -64,6 +71,7 @@ typedef int WTJourneySegment;
 @property (assign) WTTravelDirection travelDirection;
 @property (assign) WTWindowDirection windowDirection;
 @property (assign) WTDayOfWeek days;
+@property (assign) WTTimeOfDay timeOfDay;
 @property (assign) WTJourneySegment journeySegment;
 @property (assign) BOOL locationSpecific;
 

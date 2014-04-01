@@ -56,12 +56,13 @@ typedef int WTJourneySegment;
     WTTravelDirection travelDirection;
     WTWindowDirection windowDirection;
     WTJourneySegment journeySegment;
-    WTDayOfWeek days;
+    NSInteger days;
     WTTimeOfDay timeOfDay;
     
     //Content
     NSString * title;
     NSString * text;
+    NSString * strand;
     NSDecimalNumber * chapter;
     BOOL locationSpecific;
 }
@@ -70,13 +71,14 @@ typedef int WTJourneySegment;
 
 @property (assign) WTTravelDirection travelDirection;
 @property (assign) WTWindowDirection windowDirection;
-@property (assign) WTDayOfWeek days;
+@property (assign) NSInteger days;
 @property (assign) WTTimeOfDay timeOfDay;
 @property (assign) WTJourneySegment journeySegment;
 @property (assign) BOOL locationSpecific;
 
 @property (retain) NSString * title;
 @property (retain) NSString * text;
+@property (retain) NSString * strand;
 @property (retain) NSDecimalNumber * chapter;
 
 

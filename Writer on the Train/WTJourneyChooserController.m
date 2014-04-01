@@ -77,8 +77,10 @@
     WTStoryManager * storyManager = root.storyManager;
     if (tableView==homeStationLocation){
         storyManager.homeCoordinate = coordinate;
+        NSLog(@"Set home station");
     }
     else if (tableView==workStationLocation){
+        NSLog(@"Set work station");
         storyManager.workCoordinate = coordinate;
     }
 }

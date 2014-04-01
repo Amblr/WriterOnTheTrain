@@ -17,6 +17,8 @@
 @synthesize windowDirection;
 @synthesize locationSpecific;
 @synthesize journeySegment;
+@synthesize strand;
+@synthesize timeOfDay;
 
 +(WTContentBlob*) contentBlobFromDictionary:(NSDictionary*) dictionary
 {
@@ -24,12 +26,13 @@
     WTContentBlob * blob = [[WTContentBlob alloc] init];
     
     // Get basic data
-    blob.title = [dictionary objectForKey:@"title"];
-    blob.text = [dictionary objectForKey:@"text"];
-    blob.chapter = [NSDecimalNumber decimalNumberWithString:[dictionary objectForKey:@"chapter"]];
+    blob.title = [dictionary objectForKey:@"Name"];
+    blob.text = [dictionary objectForKey:@"Text"];
+    blob.strand = [dictionary objectForKey:@"Strand"];
+    blob.chapter = [NSDecimalNumber decimalNumberWithString:[dictionary objectForKey:@"Position"]];
     
     // Get the direction of travel
-    NSString * journeyDirectionString = [dictionary objectForKey:@"direction"];
+    NSString * journeyDirectionString = [[dictionary objectForKey:@"Direction of Travel"] lowercaseString];
     if (journeyDirectionString==nil) blob.travelDirection = WTTravelDirectionAny;
     else if ([journeyDirectionString isEqualToString:@"east"]) blob.travelDirection = WTTravelDirectionEastbound;
     else if ([journeyDirectionString isEqualToString:@"west"]) blob.travelDirection = WTTravelDirectionWestbound;
@@ -40,17 +43,17 @@
     
     // Get days of the week on which content is valid
     NSNumber * dayMask = [dictionary objectForKey:@"dayMask"];
-    blob.days = (WTDayOfWeek) dayMask.intValue;
+    blob.days = dayMask.intValue;
     
     // Which window to look out of for the inbound journey
-    NSString * windowDirectionString = [dictionary objectForKey:@"window"];
+    NSString * windowDirectionString = [[dictionary objectForKey:@"window"] lowercaseString];
     if (windowDirectionString==nil) blob.windowDirection = WTWindowDirectionEither;
     else if ([windowDirectionString isEqualToString:@"left"]) blob.windowDirection = WTWindowDirectionLeft;
     else if ([windowDirectionString isEqualToString:@"right"]) blob.windowDirection = WTWindowDirectionRight;
     else if ([windowDirectionString isEqualToString:@"either"]) blob.windowDirection = WTWindowDirectionEither;
     else NSAssert(NO, @"Invalid window direction string %@", windowDirectionString);
 
-    NSString * timeOfDayString = [dictionary objectForKey:@"time"];
+    NSString * timeOfDayString = [[dictionary objectForKey:@"Time of Day"] lowercaseString];
     if (timeOfDayString==nil) blob.timeOfDay = WTTimeOfDayAny;
     else if ([timeOfDayString isEqualToString:@"any"]) blob.timeOfDay = WTTimeOfDayAny;
     else if ([timeOfDayString isEqualToString:@"morning"]) blob.timeOfDay = WTTimeOfDayMorning;
@@ -59,15 +62,15 @@
 
 
     
-
-    
     //Valid journey segment
-    NSNumber * journeySegmentNumber = [dictionary objectForKey:@"segment"];
+    NSNumber * journeySegmentNumber = [dictionary objectForKey:@"Phase of Journey"];
     if (journeySegmentNumber==nil) blob.journeySegment = WTJourneySegmentAny;
     else blob.journeySegment = (WTJourneySegment) journeySegmentNumber.intValue;
 
     // We will not find this out until later.
     blob.locationSpecific = NO;
+    
+    NSLog(@"Got blob called %@",blob.title);
     
     return blob;
 }

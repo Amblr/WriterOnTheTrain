@@ -14,6 +14,7 @@
 
 @end
 
+
 @implementation WTContentListViewController
 @synthesize storyManager;
 - (id)initWithStyle:(UITableViewStyle)style
@@ -74,21 +75,24 @@
     // Configure the cell...
     NSString * title =[self.storyManager titleForContentAtIndex:indexPath.row];
     if ([title characterAtIndex:0]=='-'){
-        UIImage * line = [UIImage imageNamed:@"line"];
-        cell.imageView.image = line;
-        
+        title = [title substringFromIndex:1];
+        cell.textLabel.textColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:0.7];
     }
     else{
-        cell.textLabel.text = title;
+        cell.textLabel.textColor = [UIColor blackColor];
+        
     }
+    cell.textLabel.text = title;
 
     return cell;
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WTContentBlob * blob = [storyManager contentAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:@"content-presentation-list" sender:blob];
+    if ([storyManager contentAtIndexIsAvailable:indexPath.row]){
+        WTContentBlob * blob = [storyManager contentAtIndex:indexPath.row];
+        [self performSegueWithIdentifier:@"content-presentation-list" sender:blob];        
+    }
 }
 
 

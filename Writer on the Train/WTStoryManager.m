@@ -102,6 +102,7 @@
 {
     // Just record that we have the nodes - keep them ourselves
     nodes = [nodeDictionary retain];
+    NSLog(@"Recevied %lu nodes",(unsigned long)[nodes count]);
 }
 
 
@@ -301,14 +302,20 @@
 -(NSString*) titleForContentAtIndex:(NSInteger) index
 {
     WTContentBlob * blob = [contentBlobs objectAtIndex:index];
-    if ([playedBlobs containsObject:blob.chapter]) return blob.title;
-    else return [NSString  stringWithFormat:@"--- %@ ---", blob.title];
+    if ([self contentAtIndexIsAvailable:index]) return blob.title;
+    else return [NSString  stringWithFormat:@"-%@", blob.title];
     
 }
 
 -(WTContentBlob*) contentAtIndex:(NSInteger) index
 {
     return [contentBlobs objectAtIndex:index];
+}
+
+-(BOOL) contentAtIndexIsAvailable:(NSInteger) index;
+{
+    WTContentBlob * blob = [contentBlobs objectAtIndex:index];
+    return [playedBlobs containsObject:blob.chapter];
 }
 
 @end

@@ -73,6 +73,7 @@
 -(NSString*) titleForContentAtIndex:(NSInteger) index;
 -(WTContentBlob*) contentAtIndex:(NSInteger) index;
 -(void) displayContentFromBackground:(NSDictionary*) info;
+-(BOOL) contentAtIndexIsAvailable:(NSInteger) index;
 
 @property (retain) WTContentBlob * scheduledContentBlob;
 

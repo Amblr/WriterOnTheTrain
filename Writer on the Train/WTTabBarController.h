@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "WTStoryManager.h"
+@class WTMapViewController;
 
 @interface WTTabBarController : UITabBarController<WTStoryManagerDelegate>
 {
     WTStoryManager * storyManager;
+    WTMapViewController * mapViewController;
+    
 }
 @property (retain) WTStoryManager * storyManager;
+@property (retain) WTMapViewController * mapViewController;
 @end

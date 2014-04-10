@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@import CoreLocation;
 
 @class WTNode;
 
@@ -41,11 +42,12 @@ typedef enum WTTimeOfDay{
     WTTimeOfDayAny=0,
     WTTimeOfDayMorning=1,
     WTTimeOfDayAfternoon=2,
+    WTTimeOfDayEvening=3,
 } WTTimeOfDay;
 
 typedef int WTJourneySegment;
-#define WTJourneySegmentAny 0
-#define WTNumberOfJourneySegments 20
+#define WTJourneySegmentAny -1
+#define WTNumberOfJourneySegments 6
 
 @interface WTContentBlob : NSObject
 {
@@ -64,7 +66,10 @@ typedef int WTJourneySegment;
     NSString * text;
     NSString * strand;
     NSDecimalNumber * chapter;
-    BOOL locationSpecific;
+    
+    CLLocationCoordinate2D coordinate;
+    
+
 }
 
 +(WTContentBlob*) contentBlobFromDictionary:(NSDictionary*) dictionary;
@@ -74,13 +79,13 @@ typedef int WTJourneySegment;
 @property (assign) NSInteger days;
 @property (assign) WTTimeOfDay timeOfDay;
 @property (assign) WTJourneySegment journeySegment;
-@property (assign) BOOL locationSpecific;
 
 @property (retain) NSString * title;
 @property (retain) NSString * text;
 @property (retain) NSString * strand;
 @property (retain) NSDecimalNumber * chapter;
-
+@property (assign) CLLocationCoordinate2D coordinate;
+@property (readonly) BOOL locationSpecific;
 
 
 @end

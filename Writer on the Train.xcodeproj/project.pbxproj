@@ -17,6 +17,13 @@
 		6D4B67DA187073630019B046 /* WTTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B67D9187073630019B046 /* WTTabBarController.m */; };
 		6D4B67DF18707AA00019B046 /* WTJourneyChooserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B67DE18707AA00019B046 /* WTJourneyChooserController.m */; };
 		6D4B67E1187084570019B046 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D4B67E0187084570019B046 /* stations.json */; };
+		6D941C0F18F5C14900B42A1F /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D941C0E18F5C14900B42A1F /* compass.png */; };
+		6D941C1118F5C15900B42A1F /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D941C1018F5C15900B42A1F /* house.png */; };
+		6D941C1318F5C17500B42A1F /* newspaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D941C1218F5C17500B42A1F /* newspaper.png */; };
+		6D941C1518F5C1D500B42A1F /* windmill.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D941C1418F5C1D500B42A1F /* windmill.png */; };
+		6D941C1718F5C1E300B42A1F /* text.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D941C1618F5C1E300B42A1F /* text.png */; };
+		6D941C1918F5C2AB00B42A1F /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D941C1818F5C2AB00B42A1F /* clock.png */; };
+		6D941C1C18F5C41A00B42A1F /* WTTimeDayChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D941C1B18F5C41A00B42A1F /* WTTimeDayChooserViewController.m */; };
 		6DA56F58186DB35D007D2ABA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA56F57186DB35C007D2ABA /* Foundation.framework */; };
 		6DA56F5A186DB35D007D2ABA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA56F59186DB35D007D2ABA /* CoreGraphics.framework */; };
 		6DA56F5C186DB35D007D2ABA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA56F5B186DB35D007D2ABA /* UIKit.framework */; };
@@ -41,6 +48,15 @@
 		6DA56FA1186DB679007D2ABA /* WTContentBlob.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA56F9F186DB679007D2ABA /* WTContentBlob.m */; };
 		6DA56FA8186DBC6D007D2ABA /* WTNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA56FA7186DBC6D007D2ABA /* WTNode.m */; };
 		6DA56FA9186DBC6D007D2ABA /* WTNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA56FA7186DBC6D007D2ABA /* WTNode.m */; };
+		6DB5FACC18EEA6B1008A521A /* L1UserLocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB5FACB18EEA6B1008A521A /* L1UserLocationAnnotation.m */; };
+		6DB5FACF18EEAA90008A521A /* fake-user-location.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB5FACD18EEAA90008A521A /* fake-user-location.png */; };
+		6DB5FAD018EEAA90008A521A /* real-user-location.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB5FACE18EEAA90008A521A /* real-user-location.png */; };
+		6DB5FAD218EEAB51008A521A /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB5FAD118EEAB51008A521A /* Accelerate.framework */; };
+		6DE44A0718F00DDD0063A003 /* WTRealLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44A0618F00DDD0063A003 /* WTRealLocationManager.m */; };
+		6DE44A0A18F013E30063A003 /* WTLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44A0918F013E30063A003 /* WTLocationManager.m */; };
+		6DE44A0D18F015480063A003 /* WTFakeLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44A0C18F015480063A003 /* WTFakeLocationManager.m */; };
+		6DE44A1018F016930063A003 /* L1SphericalGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44A0F18F016930063A003 /* L1SphericalGeometry.m */; };
+		6DE44A1318F099F70063A003 /* L1Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE44A1218F099F70063A003 /* L1Weather.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +88,14 @@
 		6D4B67DD18707AA00019B046 /* WTJourneyChooserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTJourneyChooserController.h; sourceTree = "<group>"; };
 		6D4B67DE18707AA00019B046 /* WTJourneyChooserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTJourneyChooserController.m; sourceTree = "<group>"; };
 		6D4B67E0187084570019B046 /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
+		6D941C0E18F5C14900B42A1F /* compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass.png; sourceTree = "<group>"; };
+		6D941C1018F5C15900B42A1F /* house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = house.png; sourceTree = "<group>"; };
+		6D941C1218F5C17500B42A1F /* newspaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newspaper.png; sourceTree = "<group>"; };
+		6D941C1418F5C1D500B42A1F /* windmill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = windmill.png; sourceTree = "<group>"; };
+		6D941C1618F5C1E300B42A1F /* text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text.png; sourceTree = "<group>"; };
+		6D941C1818F5C2AB00B42A1F /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
+		6D941C1A18F5C41A00B42A1F /* WTTimeDayChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTimeDayChooserViewController.h; sourceTree = "<group>"; };
+		6D941C1B18F5C41A00B42A1F /* WTTimeDayChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTimeDayChooserViewController.m; sourceTree = "<group>"; };
 		6DA56F54186DB35C007D2ABA /* Writer on the Train.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Writer on the Train.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DA56F57186DB35C007D2ABA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6DA56F59186DB35D007D2ABA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -102,6 +126,21 @@
 		6DA56F9F186DB679007D2ABA /* WTContentBlob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTContentBlob.m; sourceTree = "<group>"; };
 		6DA56FA6186DBC6D007D2ABA /* WTNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNode.h; sourceTree = "<group>"; };
 		6DA56FA7186DBC6D007D2ABA /* WTNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNode.m; sourceTree = "<group>"; };
+		6DB5FACA18EEA6B1008A521A /* L1UserLocationAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = L1UserLocationAnnotation.h; sourceTree = "<group>"; };
+		6DB5FACB18EEA6B1008A521A /* L1UserLocationAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = L1UserLocationAnnotation.m; sourceTree = "<group>"; };
+		6DB5FACD18EEAA90008A521A /* fake-user-location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fake-user-location.png"; sourceTree = "<group>"; };
+		6DB5FACE18EEAA90008A521A /* real-user-location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "real-user-location.png"; sourceTree = "<group>"; };
+		6DB5FAD118EEAB51008A521A /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		6DE44A0518F00DDD0063A003 /* WTRealLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRealLocationManager.h; sourceTree = "<group>"; };
+		6DE44A0618F00DDD0063A003 /* WTRealLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRealLocationManager.m; sourceTree = "<group>"; };
+		6DE44A0818F013E30063A003 /* WTLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = WTLocationManager.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
+		6DE44A0918F013E30063A003 /* WTLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = WTLocationManager.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
+		6DE44A0B18F015480063A003 /* WTFakeLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTFakeLocationManager.h; sourceTree = "<group>"; };
+		6DE44A0C18F015480063A003 /* WTFakeLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTFakeLocationManager.m; sourceTree = "<group>"; };
+		6DE44A0E18F016930063A003 /* L1SphericalGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = L1SphericalGeometry.h; sourceTree = "<group>"; };
+		6DE44A0F18F016930063A003 /* L1SphericalGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = L1SphericalGeometry.m; sourceTree = "<group>"; };
+		6DE44A1118F099F70063A003 /* L1Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = L1Weather.h; sourceTree = "<group>"; };
+		6DE44A1218F099F70063A003 /* L1Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = L1Weather.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DB5FAD218EEAB51008A521A /* Accelerate.framework in Frameworks */,
 				6DA56F9D186DB5A4007D2ABA /* AudioToolbox.framework in Frameworks */,
 				6DA56F9A186DB569007D2ABA /* MapKit.framework in Frameworks */,
 				6DA56F98186DB55D007D2ABA /* CoreLocation.framework in Frameworks */,
@@ -154,6 +194,8 @@
 				6D4B67DE18707AA00019B046 /* WTJourneyChooserController.m */,
 				6D19A6E91871D8E200BDE5B0 /* WTContentListViewController.h */,
 				6D19A6EA1871D8E200BDE5B0 /* WTContentListViewController.m */,
+				6D941C1A18F5C41A00B42A1F /* WTTimeDayChooserViewController.h */,
+				6D941C1B18F5C41A00B42A1F /* WTTimeDayChooserViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -167,12 +209,33 @@
 				6DA56FA7186DBC6D007D2ABA /* WTNode.m */,
 				6D19A6E11871C89D00BDE5B0 /* WTJourney.h */,
 				6D19A6E21871C89D00BDE5B0 /* WTJourney.m */,
+				6DE44A0818F013E30063A003 /* WTLocationManager.h */,
+				6DE44A0918F013E30063A003 /* WTLocationManager.m */,
+				6DE44A0B18F015480063A003 /* WTFakeLocationManager.h */,
+				6DE44A0C18F015480063A003 /* WTFakeLocationManager.m */,
+				6DE44A0518F00DDD0063A003 /* WTRealLocationManager.h */,
+				6DE44A0618F00DDD0063A003 /* WTRealLocationManager.m */,
 				6D4B67D1186F7DF10019B046 /* WTStoryManager.h */,
 				6D4B67D2186F7DF10019B046 /* WTStoryManager.m */,
 				6DA56F9E186DB679007D2ABA /* WTContentBlob.h */,
 				6DA56F9F186DB679007D2ABA /* WTContentBlob.m */,
+				6DE44A1118F099F70063A003 /* L1Weather.h */,
+				6DE44A1218F099F70063A003 /* L1Weather.m */,
 			);
 			name = "Story Content";
+			sourceTree = "<group>";
+		};
+		6D7762B718F5432200F0D66A /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				6D941C1018F5C15900B42A1F /* house.png */,
+				6D941C1818F5C2AB00B42A1F /* clock.png */,
+				6D941C1418F5C1D500B42A1F /* windmill.png */,
+				6D941C1618F5C1E300B42A1F /* text.png */,
+				6D941C1218F5C17500B42A1F /* newspaper.png */,
+				6D941C0E18F5C14900B42A1F /* compass.png */,
+			);
+			name = Icons;
 			sourceTree = "<group>";
 		};
 		6DA56F4B186DB35C007D2ABA = {
@@ -197,6 +260,7 @@
 		6DA56F56186DB35C007D2ABA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6DB5FAD118EEAB51008A521A /* Accelerate.framework */,
 				6DA56F9C186DB5A4007D2ABA /* AudioToolbox.framework */,
 				6DA56F99186DB569007D2ABA /* MapKit.framework */,
 				6DA56F97186DB55D007D2ABA /* CoreLocation.framework */,
@@ -221,6 +285,8 @@
 				6D4B67D4186F892E0019B046 /* WTConfiguration.h */,
 				6DA56F69186DB35D007D2ABA /* Main.storyboard */,
 				6D4B67CF186F7D080019B046 /* Main-iPad.storyboard */,
+				6D7762B718F5432200F0D66A /* Icons */,
+				6DE0D0C218EB34F40001F17E /* Utilities */,
 				6D4B67DC187077AF0019B046 /* Story Content */,
 				6D4B67DB187077A10019B046 /* View Controllers */,
 				6DA56F72186DB35D007D2ABA /* Images.xcassets */,
@@ -232,8 +298,6 @@
 		6DA56F5E186DB35D007D2ABA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6D19A6DE1871C74400BDE5B0 /* WTUtils.h */,
-				6D19A6DF1871C74400BDE5B0 /* WTUtils.m */,
 				6DA56F5F186DB35D007D2ABA /* Writer on the Train-Info.plist */,
 				6DA56F60186DB35D007D2ABA /* InfoPlist.strings */,
 				6DA56F63186DB35D007D2ABA /* main.m */,
@@ -258,6 +322,21 @@
 				6DA56F82186DB35D007D2ABA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6DE0D0C218EB34F40001F17E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				6DB5FACD18EEAA90008A521A /* fake-user-location.png */,
+				6DB5FACE18EEAA90008A521A /* real-user-location.png */,
+				6DE44A0E18F016930063A003 /* L1SphericalGeometry.h */,
+				6DE44A0F18F016930063A003 /* L1SphericalGeometry.m */,
+				6DB5FACA18EEA6B1008A521A /* L1UserLocationAnnotation.h */,
+				6DB5FACB18EEA6B1008A521A /* L1UserLocationAnnotation.m */,
+				6D19A6DE1871C74400BDE5B0 /* WTUtils.h */,
+				6D19A6DF1871C74400BDE5B0 /* WTUtils.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,7 +384,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = WT;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Joe Zuntz";
 				TargetAttributes = {
 					6DA56F53186DB35C007D2ABA = {
@@ -346,10 +425,18 @@
 			files = (
 				6DA56F73186DB35D007D2ABA /* Images.xcassets in Resources */,
 				6DA56F62186DB35D007D2ABA /* InfoPlist.strings in Resources */,
+				6D941C1118F5C15900B42A1F /* house.png in Resources */,
 				6DA56F6B186DB35D007D2ABA /* Main.storyboard in Resources */,
+				6DB5FACF18EEAA90008A521A /* fake-user-location.png in Resources */,
 				6D4B67D0186F7D080019B046 /* Main-iPad.storyboard in Resources */,
 				6D19A6E51871D56400BDE5B0 /* blobs.json in Resources */,
+				6D941C1318F5C17500B42A1F /* newspaper.png in Resources */,
+				6D941C1718F5C1E300B42A1F /* text.png in Resources */,
 				6D4B67E1187084570019B046 /* stations.json in Resources */,
+				6D941C0F18F5C14900B42A1F /* compass.png in Resources */,
+				6DB5FAD018EEAA90008A521A /* real-user-location.png in Resources */,
+				6D941C1918F5C2AB00B42A1F /* clock.png in Resources */,
+				6D941C1518F5C1D500B42A1F /* windmill.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,17 +456,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D4B67DA187073630019B046 /* WTTabBarController.m in Sources */,
+				6DE44A1018F016930063A003 /* L1SphericalGeometry.m in Sources */,
 				6D19A6E31871C89D00BDE5B0 /* WTJourney.m in Sources */,
+				6DB5FACC18EEA6B1008A521A /* L1UserLocationAnnotation.m in Sources */,
 				6DA56F64186DB35D007D2ABA /* main.m in Sources */,
 				6D19A6E01871C74400BDE5B0 /* WTUtils.m in Sources */,
 				6D4B67D7187070340019B046 /* WTContentViewController.m in Sources */,
 				6D19A6EB1871D8E200BDE5B0 /* WTContentListViewController.m in Sources */,
 				6DA56FA8186DBC6D007D2ABA /* WTNode.m in Sources */,
+				6D941C1C18F5C41A00B42A1F /* WTTimeDayChooserViewController.m in Sources */,
 				6DA56F68186DB35D007D2ABA /* WTAppDelegate.m in Sources */,
 				6DA56FA0186DB679007D2ABA /* WTContentBlob.m in Sources */,
+				6DE44A1318F099F70063A003 /* L1Weather.m in Sources */,
 				6D4B67D3186F7DF10019B046 /* WTStoryManager.m in Sources */,
+				6DE44A0718F00DDD0063A003 /* WTRealLocationManager.m in Sources */,
+				6DE44A0A18F013E30063A003 /* WTLocationManager.m in Sources */,
 				6DA56F6E186DB35D007D2ABA /* WTMapViewController.m in Sources */,
 				6D4B67DF18707AA00019B046 /* WTJourneyChooserController.m in Sources */,
+				6DE44A0D18F015480063A003 /* WTFakeLocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,7 +529,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -474,7 +567,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -513,6 +605,7 @@
 				GCC_PREFIX_HEADER = "Writer on the Train/Writer on the Train-Prefix.pch";
 				INFOPLIST_FILE = "Writer on the Train/Writer on the Train-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = "-Wno-undeclared-selector";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -531,6 +624,7 @@
 				GCC_PREFIX_HEADER = "Writer on the Train/Writer on the Train-Prefix.pch";
 				INFOPLIST_FILE = "Writer on the Train/Writer on the Train-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = "-Wno-undeclared-selector";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -542,7 +636,6 @@
 		6DA56F8D186DB35D007D2ABA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Writer on the Train.app/Writer on the Train";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -565,7 +658,6 @@
 		6DA56F8E186DB35D007D2ABA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Writer on the Train.app/Writer on the Train";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

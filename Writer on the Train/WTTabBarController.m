@@ -10,6 +10,7 @@
 #import "WTContentViewController.h"
 #import "WTContentBlob.h"
 #import "WTStoryManager.h"
+#import "WTMapViewController.h"
 
 @interface WTTabBarController ()
 
@@ -17,6 +18,7 @@
 
 @implementation WTTabBarController
 @synthesize storyManager;
+@synthesize mapViewController;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -36,6 +38,7 @@
     storyManager = [[WTStoryManager alloc] init];
     storyManager.delegate = self;
 
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,6 +89,13 @@
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Choose stations" message:@"Please choose your stations before starting your journey" delegate:self cancelButtonTitle:@"Continue" otherButtonTitles:nil];
     alert.delegate = self;
     [alert show];
+}
+
+-(void) locationUpdate:(CLLocation *)location
+{
+    // Tell the map view to update location
+    [mapViewController locationUpdate:location];
+    
 }
 
 @end

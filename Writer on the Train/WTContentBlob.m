@@ -15,10 +15,15 @@
 @synthesize travelDirection;
 @synthesize days;
 @synthesize windowDirection;
-@synthesize locationSpecific;
 @synthesize journeySegment;
 @synthesize strand;
 @synthesize timeOfDay;
+@synthesize coordinate;
+
+-(BOOL) locationSpecific
+{
+    return CLLocationCoordinate2DIsValid(coordinate);
+}
 
 +(WTContentBlob*) contentBlobFromDictionary:(NSDictionary*) dictionary
 {
@@ -58,19 +63,35 @@
     else if ([timeOfDayString isEqualToString:@"any"]) blob.timeOfDay = WTTimeOfDayAny;
     else if ([timeOfDayString isEqualToString:@"morning"]) blob.timeOfDay = WTTimeOfDayMorning;
     else if ([timeOfDayString isEqualToString:@"afternoon"]) blob.timeOfDay = WTTimeOfDayAfternoon;
+    else if ([timeOfDayString isEqualToString:@"evening"]) blob.timeOfDay = WTTimeOfDayEvening;
     else NSAssert(NO, @"Invalid time of day string %@", timeOfDayString);
-
-
+    
+    NSString * latString = [[dictionary objectForKey:@"Lat"] lowercaseString];
+    NSString * lonString = [[dictionary objectForKey:@"Lon"] lowercaseString];
+    if ([lonString length]==0){
+        NSLog(@"lonString=%@",lonString);
+        NSLog(@"latString=%@",lonString);
+        blob.coordinate = CLLocationCoordinate2DMake(NAN, NAN);
+    }
+    else{
+        float lat = [latString floatValue];
+        float lon = [lonString floatValue];
+        blob.coordinate = CLLocationCoordinate2DMake(lat,lon);
+    }
+    
+    
     
     //Valid journey segment
     NSNumber * journeySegmentNumber = [dictionary objectForKey:@"Phase of Journey"];
     if (journeySegmentNumber==nil) blob.journeySegment = WTJourneySegmentAny;
     else blob.journeySegment = (WTJourneySegment) journeySegmentNumber.intValue;
-
-    // We will not find this out until later.
-    blob.locationSpecific = NO;
     
-    NSLog(@"Got blob called %@",blob.title);
+    
+    if (!(CLLocationCoordinate2DIsValid(blob.coordinate) || blob.journeySegment>=0)){
+        NSAssert(CLLocationCoordinate2DIsValid(blob.coordinate) || blob.journeySegment>=0, @"Bad blob");
+    }
+    
+    NSLog(@"Got blob called %@ at segment %d",blob.title, blob.journeySegment);
     
     return blob;
 }

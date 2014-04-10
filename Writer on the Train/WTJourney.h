@@ -12,8 +12,8 @@
 
 @interface WTJourney : NSObject
 {
-    CLLocationCoordinate2D journeyStartCoordinate;
-    CLLocationCoordinate2D journeyEndCoordinate;
+    CLLocationCoordinate2D journeyStart;
+    CLLocationCoordinate2D journeyEnd;
     NSDate * journeyStartTime;
     WTTravelDirection travelDirection;
     WTJourneySegment journeySegment;

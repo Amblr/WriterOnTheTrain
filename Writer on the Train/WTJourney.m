@@ -59,15 +59,22 @@
     // need an approx solution.
     
     MKMapPoint x0 = MKMapPointForCoordinate(coordinate);
-    MKMapPoint x1 = MKMapPointForCoordinate(journeyStartCoordinate);
-    MKMapPoint x2 = MKMapPointForCoordinate(journeyEndCoordinate);
-    MKMapPoint d1 = WTMapPointDifference(x1,x0);
-    MKMapPoint d2 = WTMapPointDifference(x2,x1);
+    MKMapPoint x1 = MKMapPointForCoordinate(journeyStart);
+    MKMapPoint x2 = MKMapPointForCoordinate(journeyEnd);
+    MKMapPoint travelledVector = WTMapPointDifference(x1,x0);
+    MKMapPoint journeyVector = WTMapPointDifference(x2,x1);
     
-    double fraction = WTMapPointDotProduct(d1, d2) / WTMapPointDotProduct(d2,d2);
-    journeySegment = (WTJourneySegment) (fraction*WTNumberOfJourneySegments) + 1;
-    if (journeySegment<1) journeySegment=1;
-    if (journeySegment>WTNumberOfJourneySegments) journeySegment=WTNumberOfJourneySegments;
+    double travelledDistance = sqrt(travelledVector.x*travelledVector.x+travelledVector.y*travelledVector.y);
+    double journeyDistance = sqrt(journeyVector.x*journeyVector.x+journeyVector.y*journeyVector.y);
+    
+    double fraction = travelledDistance/journeyDistance;
+    WTJourneySegment newJourneySegment = (WTJourneySegment) (fraction*WTNumberOfJourneySegments);
+    if (newJourneySegment<0) newJourneySegment=0;
+    if (newJourneySegment>WTNumberOfJourneySegments) newJourneySegment=WTNumberOfJourneySegments;
+    if (newJourneySegment!=journeySegment) {
+        NSLog(@"Moved to journey segment %d",newJourneySegment);
+    }
+    journeySegment=newJourneySegment;
 }
 
 -(void) determineJourneyDirectionFromCoordinate:(CLLocationCoordinate2D) coordinate home:(CLLocationCoordinate2D) homeCoordinate work:(CLLocationCoordinate2D) workCoordinate;
@@ -83,8 +90,14 @@
     
     travelDirection = (distanceFromHome<distanceFromWork) ? WTTravelDirectionEastbound : WTTravelDirectionWestbound;
     
-    if (travelDirection==WTTravelDirectionEastbound) journeyStartCoordinate = homeCoordinate;
-    else if (travelDirection==WTTravelDirectionWestbound) journeyStartCoordinate = workCoordinate;
+    if (travelDirection==WTTravelDirectionEastbound) {
+        journeyStart = homeCoordinate;
+        journeyEnd = workCoordinate;
+    }
+    else if (travelDirection==WTTravelDirectionWestbound) {
+        journeyStart = workCoordinate;
+        journeyEnd = homeCoordinate;
+    }
     
 }
 

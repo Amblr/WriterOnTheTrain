@@ -14,7 +14,7 @@ WTDayOfWeek WTCurrentDayOfWeek()
     CFAbsoluteTime at = CFAbsoluteTimeGetCurrent();
     CFTimeZoneRef tz = CFTimeZoneCopySystem();
     SInt32 WeekdayNumber = CFAbsoluteTimeGetDayOfWeek(at, tz);
-    return (WTDayOfWeek) 2<<(WeekdayNumber-1);
+    return (WTDayOfWeek) 1<<(WeekdayNumber-1);
 }
 
 

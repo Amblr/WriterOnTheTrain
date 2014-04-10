@@ -14,21 +14,11 @@
 #import "L1Utils.h"
 #import "WTUtils.h"
 #import "WTJourney.h"
+#import "WTRealLocationManager.h"
+#import "WTFakeLocationManager.h"
 
 @import CoreLocation;
 
-#define HIGH_RES_LOCATION_INTERVAL_MINUTES 10
-#define DELAY_FOR_NONLOCATION_TRIGGER_MINUTES 10
-
-// JAZ Can change this to simulate
-#define MINUTES 1.0
-#define WTDEBUG YES
-
-#ifdef WTDEBUG
-#   define WTDEBUGLOG(fmt, ...) NSLog(fmt, ##__VA_ARGS__)
-#else
-#   define WTDEBUGLOG(...)
-#endif
 
 
 
@@ -43,7 +33,7 @@
 @synthesize journey;
 @synthesize playedBlobs;
 @synthesize scheduledContentBlob;
-
+@synthesize fakeDate;
 
 #pragma mark -
 #pragma mark Life cycle and delegate
@@ -52,12 +42,12 @@
 {
     self = [super init];
     if (self){
-        locationManager = [[CLLocationManager alloc] init];
-        locationManager.delegate = self;
-        locationManager.activityType = CLActivityTypeOtherNavigation;
         
-        highResolutionLocationInterval = HIGH_RES_LOCATION_INTERVAL_MINUTES * MINUTES;
-        inHighResolutionRegion = NO;
+#if (REAL_LOCATION)
+        locationManager = [[WTRealLocationManager alloc] initWithStoryManager:self];
+#else
+        locationManager = [[WTFakeLocationManager alloc] initWithStoryManager:self coordinate:CLLocationCoordinate2DMake(NAN, NAN)];
+#endif
         
         // Load scenario
         scenario = [L1Scenario scenarioFromStoryURL:WT_STORY_URL withKey:WT_SCENARIO_KEY];
@@ -72,7 +62,9 @@
         homeCoordinate.longitude = NAN;
         workCoordinate.longitude = NAN;
         workCoordinate.latitude = NAN;
-
+        
+        self.fakeDate = [NSDate date];
+        
         // Load content blobs
         contentBlobs = [[NSMutableArray alloc] initWithCapacity:0];
         blobStatus = [[NSMutableDictionary alloc] initWithCapacity:0];
@@ -116,28 +108,31 @@
         return NO;
     }
     // Start location behaviour
-    locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
-    [locationManager startUpdatingLocation];
 
     // Some parameters about our journey
-    haveShownNonlocationContent = NO;
+    haveShownContentOnThisJourney = NO;
     
     self.journey = [WTJourney journey];
+#if (!REAL_LOCATION)
+    WTFakeLocationManager * fakeLocationManager = (WTFakeLocationManager*) locationManager;
+    fakeLocationManager.fakeJourneyStart = homeCoordinate;
+    fakeLocationManager.fakeJourneyEnd = workCoordinate;
+    fakeLocationManager.speed = TRAIN_SPEED;
+#endif
+    [locationManager startJourney];
     
     // Set direction of travel.
     // Work it out by which station is nearer.  We indicate that we do not know the
     // travel direction yet by setting it to "any".
     // then the first location update will set it
-    [self performSelector:@selector(getHighResolutionLocation) withObject:nil afterDelay:highResolutionLocationInterval];
+    journey.travelDirection = WTTravelDirectionAny;
     return YES;
 }
 
 
 -(void) endJourney
 {
-    [locationManager stopUpdatingLocation];
     self.journey = nil;
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(getHighResolutionLocation) object:nil];
 }
 
 
@@ -146,39 +141,43 @@
 
 
 
-
--(void) getHighResolutionLocation
-{
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self performSelector:@selector(getHighResolutionLocation) withObject:nil afterDelay:highResolutionLocationInterval];
-}
-
-
-
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+- (void) locationUpdate:(CLLocation*) location
 {
     
-    NSLog(@"Location update (%@ res)", locationManager.desiredAccuracy==kCLLocationAccuracyBest?@"High":@"Low");
-    CLLocation * currentLocation = [locations lastObject];
+    [self.delegate locationUpdate:location];
+    
+    if (journey==nil){
+        return;
+    }
     
     // If we do not know the travel direction yet then figure it out
     // and that is the only thing we do
     if (journey.travelDirection==WTTravelDirectionAny){
-        [self.journey determineJourneyDirectionFromCoordinate:currentLocation.coordinate home:homeCoordinate work:workCoordinate];
+        [self.journey determineJourneyDirectionFromCoordinate:location.coordinate home:homeCoordinate work:workCoordinate];
+        WTDEBUGLOG(@"Determining travel direction");
         return;
     }
     
+    if (haveShownContentOnThisJourney){
+        // This probably shouldn't happen - we should switch off location updates once we
+        // have seen the content.
+        WTDEBUGLOG(@"No more content due this journey");
+        return;
+    }
+    
+    
     // Update the fraction of the journey we have done
-    [journey determineJourneySegment:currentLocation.coordinate];
+    [journey determineJourneySegment:location.coordinate];
 
     // Find some content and display it if found
-    WTContentBlob * content = [self findContentForCoordinate:currentLocation.coordinate];
-    if (content) [self displayContent:content];
-
-    // If we are not in an explicit high-res region (i.e., if we have a one-off high-res location from the interval)
-    // then switch back to low-res location
-    if (!inHighResolutionRegion) locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
+    WTContentBlob * content = [self findContentForCoordinate:location.coordinate];
+    if (content) {
+        [self displayContent:content];
+        haveShownContentOnThisJourney = YES;
+        // The journey is over as far as we are concerned because we have seen the only
+        // content we will see
+        [self endJourney];
+    }
 
 }
 
@@ -203,69 +202,137 @@
         return NO;
     }
     
+#if (REAL_LOCATION==0)
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:self.fakeDate];
+    NSInteger weekday = components.weekday; // Sunday=1, Monday=2, ...
+    NSInteger weekdayFromMonday = ((weekday+1)%7)+1 ;
+    NSInteger weekdayPower = 1<<weekdayFromMonday;
+    WTDayOfWeek currentDayOfWeek = weekdayPower;
+    NSDateComponents *hourComponents = [[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:self.fakeDate];
+    NSInteger hour = hourComponents.hour;
+    WTTimeOfDay timeOfDay;
+    if (hour<12) timeOfDay = WTTimeOfDayMorning;
+    else if (hour<17) timeOfDay = WTTimeOfDayAfternoon;
+    else timeOfDay = WTTimeOfDayEvening;
+#else
     WTDayOfWeek currentDayOfWeek = WTCurrentDayOfWeek();
     WTTimeOfDay timeOfDay = [WTStoryManager isMorning] ? WTTimeOfDayMorning : WTTimeOfDayAfternoon;
-    if ((blob.timeOfDay!=WTTimeOfDayAny) && (blob.timeOfDay!=timeOfDay)) return NO;
-    if (!(currentDayOfWeek & blob.days)) return NO;
-    if ((blob.travelDirection != journey.travelDirection) && (blob.travelDirection!=WTTravelDirectionAny)) return NO;
-    if ((blob.journeySegment!=journey.journeySegment) && (blob.journeySegment!=WTJourneySegmentAny)) return NO;
-
-    return YES;
-}
-
--(WTContentBlob*) validContentMatchingName:(NSString*)name atCoordinate:(CLLocationCoordinate2D) coordinate
-{
-    for (WTContentBlob* blob in contentBlobs){
-        if (![blob.title isEqualToString:name]) continue;
-        if ([self contentBlob:blob isValidAtCoordinate:coordinate]){
-            blob.locationSpecific = YES;
-            return blob;
-        }
+    
+#endif
+    if ((blob.timeOfDay!=WTTimeOfDayAny) && (blob.timeOfDay!=timeOfDay)) {
+        WTDEBUGLOG(@"Wrong time of day (%d,%d) for %@",timeOfDay, blob.timeOfDay, blob.title);
+        return NO;
     }
-    return nil;
-}
-
--(WTContentBlob*) nextValidContentAtCoordinate:(CLLocationCoordinate2D) coordinate
-{
-    for (WTContentBlob* blob in contentBlobs){
-        if ([self contentBlob:blob isValidAtCoordinate:coordinate]) {
-            WTDEBUGLOG(@"Blob IS valid %@", blob);
-            return blob;
+    if (!(currentDayOfWeek & blob.days)) {
+        WTDEBUGLOG(@"Wrong day of week (%d,%d) for %@",currentDayOfWeek, blob.days, blob.title);
+        return NO;
+    }
+    if ((blob.travelDirection != journey.travelDirection) && (blob.travelDirection!=WTTravelDirectionAny)){
+        WTDEBUGLOG(@"Wrong travel direction (%d,%d) for %@",journey.travelDirection, blob.travelDirection, blob.title);
+        return NO;
+        
+    }
+    
+    // Location check.
+    // There are two types of location we have - journey segments and lat/lon
+    if (CLLocationCoordinate2DIsValid(blob.coordinate)){
+        CLLocation * blobLocation = [[CLLocation alloc] initWithLatitude:blob.coordinate.latitude longitude:blob.coordinate.longitude];
+        CLLocation * ourLocation = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+        CLLocationDistance d = [ourLocation distanceFromLocation:blobLocation];
+        [blobLocation release];
+        [ourLocation release];
+        BOOL close = d<LOCATION_SPECIFIC_NODE_SIZE_METERS;
+        if (close) {
+            WTDEBUGLOG(@"Close enough (%f) for %@!",d,blob.title);
+        }
+        else {
+            WTDEBUGLOG(@"Too far (%f) for %@!",d,blob.title);
+        }
+        return close;
+    }
+    else{
+        // If we get here the journey segment should not be -1, since that would mean we have neither a location nor
+        // a segment
+        BOOL rightSegment =(blob.journeySegment==journey.journeySegment);
+        if (!rightSegment){
+            WTDEBUGLOG(@"Wrong segment (%d,%d) for %@!",journey.journeySegment, blob.journeySegment, blob.title);
         }
         else{
-            WTDEBUGLOG(@"Blob not valid %@", blob);
+            WTDEBUGLOG(@"Right segment (%d,%d) for %@!",journey.journeySegment, blob.journeySegment, blob.title);
         }
+        return rightSegment;
     }
-    return nil;
 }
+
+//-(WTContentBlob*) validContentMatchingName:(NSString*)name atCoordinate:(CLLocationCoordinate2D) coordinate
+//{
+//    for (WTContentBlob* blob in contentBlobs){
+//        if (![blob.title isEqualToString:name]) continue;
+//        if ([self contentBlob:blob isValidAtCoordinate:coordinate]){
+//            return blob;
+//        }
+//    }
+//    return nil;
+//}
+
+//-(WTContentBlob*) nextValidContentAtCoordinate:(CLLocationCoordinate2D) coordinate
+//{
+//    for (WTContentBlob* blob in contentBlobs){
+//        if ([self contentBlob:blob isValidAtCoordinate:coordinate]) {
+//            WTDEBUGLOG(@"Blob IS valid %@", blob);
+//            return blob;
+//        }
+//        else{
+//            WTDEBUGLOG(@"Blob not valid %@", blob);
+//        }
+//    }
+//    return nil;
+//}
 
 
 -(WTContentBlob*) findContentForCoordinate:(CLLocationCoordinate2D) coordinate
 {
     WTContentBlob * content = nil;
+    for (WTContentBlob * blob in contentBlobs){
+        if ([self contentBlob:blob isValidAtCoordinate:coordinate]){
+            WTDEBUGLOG(@"Content %@ is VALID", blob.title);
+            content=blob;
+            break;
+        }
+        else{
+        }
+    }
+    return content;
+    
+    // For each node we check if the node is either near to where we are or
+    //
+    
+    
     
     // Check the nodes in the scenario to see if one of them is hit.
     // If so, ask the ContentSequencer to see if there is a matching and valid ContentBlob
     // If there is, activate it.
-    NSString * activatedNodeName = nil;
-    for (WTNode * node in [nodes allValues]){
-        if ([node.region containsCoordinate:coordinate]){
-            activatedNodeName = node.name;
-            break;
-        }
-    }
-    if (activatedNodeName){
-        content = [self validContentMatchingName:activatedNodeName atCoordinate:coordinate];
-    }
-    else if (!haveShownNonlocationContent){
-        // Alternatively we may have reached a length of time after
-        // which to show some content regardless of location
-        NSTimeInterval elapsed = -[journey.journeyStartTime timeIntervalSinceNow];
-        if (elapsed>DELAY_FOR_NONLOCATION_TRIGGER_MINUTES*MINUTES){
-            content = [self nextValidContentAtCoordinate:coordinate];
-            haveShownNonlocationContent = YES;
-        }
-    }
+//    NSString * activatedNodeName = nil;
+//    for (WTNode * node in [nodes allValues]){
+//        if ([node.region containsCoordinate:coordinate]){
+//            activatedNodeName = node.name;
+//            break;
+//        }
+//    }
+//    if (activatedNodeName){
+//        content = [self validContentMatchingName:activatedNodeName atCoordinate:coordinate];
+//    }
+//    else if (!haveShownNonlocationContent){
+//        // Alternatively we may have reached a length of time after
+//        // which to show some content regardless of location
+//        NSTimeInterval elapsed = -[journey.journeyStartTime timeIntervalSinceNow];
+//        if (elapsed>DELAY_FOR_NONLOCATION_TRIGGER_MINUTES*MINUTES){
+//            content = [self nextValidContentAtCoordinate:coordinate];
+//            haveShownNonlocationContent = YES;
+//        }
+//    }
+//    
+    
     return content;
 }
 

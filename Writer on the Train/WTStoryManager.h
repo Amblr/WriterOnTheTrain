@@ -11,25 +11,26 @@
 @class L1Scenario;
 @import CoreLocation;
 @class WTJourney;
+@class WTRealLocationManager;
 #import "WTContentBlob.h"
+#import "WTLocationManager.h"
 
 @protocol WTStoryManagerDelegate <NSObject>
 
 -(void) chooseStationRequest;
 -(BOOL) displayContent:(WTContentBlob*) content;
+-(void) locationUpdate:(CLLocation*) location;
 
 @end
 
-@interface WTStoryManager : NSObject<CLLocationManagerDelegate>
+@interface WTStoryManager : NSObject<CLLocationManagerDelegate, WTLocationManagerDelegate>
 {
     // General properties
-    CLLocationManager * locationManager;
-    NSTimeInterval highResolutionLocationInterval;
+    WTLocationManager * locationManager;
     id<WTStoryManagerDelegate> delegate;
 
     // Info about current journey
-    BOOL inHighResolutionRegion;
-    BOOL haveShownNonlocationContent;
+    BOOL haveShownContentOnThisJourney;
     
 
     // Content management
@@ -48,6 +49,10 @@
     NSMutableSet * playedBlobs;
     
     WTContentBlob * scheduledContentBlob;
+    
+    // Some fake information
+    NSDate * fakeDate;
+    
 
 
 }
@@ -67,13 +72,16 @@
 -(void) displayContent:(WTContentBlob*) content;
 @property (retain) id delegate;
 
--(WTContentBlob*) validContentMatchingName:(NSString*)name atCoordinate:(CLLocationCoordinate2D) coordinate;
--(WTContentBlob*) nextValidContentAtCoordinate:(CLLocationCoordinate2D) coordinate;
+//-(WTContentBlob*) validContentMatchingName:(NSString*)name atCoordinate:(CLLocationCoordinate2D) coordinate;
+//-(WTContentBlob*) nextValidContentAtCoordinate:(CLLocationCoordinate2D) coordinate;
 -(NSInteger) contentCount;
 -(NSString*) titleForContentAtIndex:(NSInteger) index;
 -(WTContentBlob*) contentAtIndex:(NSInteger) index;
 -(void) displayContentFromBackground:(NSDictionary*) info;
 -(BOOL) contentAtIndexIsAvailable:(NSInteger) index;
+-(void) locationUpdate:(CLLocation*) location;
+
+
 
 @property (retain) WTContentBlob * scheduledContentBlob;
 
@@ -81,5 +89,6 @@
 @property (assign) CLLocationCoordinate2D homeCoordinate;
 @property (assign) CLLocationCoordinate2D workCoordinate;
 @property (retain) WTJourney * journey;
+@property (retain) NSDate * fakeDate;
 
 @end

@@ -10,11 +10,14 @@
 #import "L1MapViewController.h"
 #import "WTStoryManager.h"
 
-@interface WTMapViewController : UIViewController
+@interface WTMapViewController : UIViewController<MKMapViewDelegate>
 {
     IBOutlet MKMapView * mapView;
+    MKPointAnnotation * userLocation;
+    MKAnnotationView * userLocationView;
     
 }
 -(IBAction)startJourney:(id)sender;
+-(void) locationUpdate:(CLLocation *)location;
 
 @end

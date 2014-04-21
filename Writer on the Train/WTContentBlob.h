@@ -13,10 +13,13 @@
 
 typedef enum WTTravelDirection {
     WTTravelDirectionAny=0,
+    
     WTTravelDirectionEastbound=1,
     WTTravelDirectionWestbound=-1,
+    
     WTTravelDirectionNorthbound=2,
     WTTravelDirectionSouthbound=-2,
+    
 } WTTravelDirection;
 
 // Bit mask for days of week.

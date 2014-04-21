@@ -26,6 +26,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        shownIntro=NO;
 
     }
     return self;
@@ -35,10 +36,29 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    if (!shownIntro) self.view.hidden=YES;
     storyManager = [[WTStoryManager alloc] init];
     storyManager.delegate = self;
-
     
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (!shownIntro) self.view.hidden=YES;
+    else self.view.hidden=NO;
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (!shownIntro) [self performSegueWithIdentifier:@"intro" sender:self];
+
+}
+
+- (IBAction)unwindIntroView:(UIStoryboardSegue *)unwindSegue
+{
+    shownIntro=YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,6 +75,7 @@
         WTContentViewController * destination = (WTContentViewController *) segue.destinationViewController;
         WTContentBlob * blob = (WTContentBlob*) sender;
         [destination setContentBlob:blob];
+        destination.buttonsVisible=YES;
     }
 }
 

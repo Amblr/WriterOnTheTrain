@@ -28,6 +28,7 @@
 
 }
 -(id) initWithStoryManager:(id<WTLocationManagerDelegate>) manager coordinate:(CLLocationCoordinate2D) startCoordinate;
+-(void) enterBackground;
 @property (assign) CLLocationCoordinate2D fakeJourneyStart;
 @property (assign) CLLocationCoordinate2D fakeJourneyEnd;
 @property (assign) CLLocationSpeed speed;

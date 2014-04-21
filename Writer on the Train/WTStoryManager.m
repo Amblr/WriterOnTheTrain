@@ -34,6 +34,7 @@
 @synthesize playedBlobs;
 @synthesize scheduledContentBlob;
 @synthesize fakeDate;
+@synthesize fakeDirectionOfTravel;
 
 #pragma mark -
 #pragma mark Life cycle and delegate
@@ -64,6 +65,7 @@
         workCoordinate.latitude = NAN;
         
         self.fakeDate = [NSDate date];
+        self.fakeDirectionOfTravel = WTTravelDirectionEastbound;
         
         // Load content blobs
         contentBlobs = [[NSMutableArray alloc] initWithCapacity:0];
@@ -101,6 +103,14 @@
 #pragma mark -
 #pragma mark Setting journey parameters
 
+-(void) enableBackgroundMode
+{
+#if (!REAL_LOCATION)
+    WTFakeLocationManager * fakeLocationManager = (WTFakeLocationManager*) locationManager;
+    [fakeLocationManager enterBackground];
+#endif
+}
+
 -(BOOL) startJourney
 {
     if (isnan(homeCoordinate.latitude) || isnan(workCoordinate.latitude)){
@@ -113,12 +123,24 @@
     haveShownContentOnThisJourney = NO;
     
     self.journey = [WTJourney journey];
+    
+    
+    // This bit is all for simulations only
 #if (!REAL_LOCATION)
     WTFakeLocationManager * fakeLocationManager = (WTFakeLocationManager*) locationManager;
-    fakeLocationManager.fakeJourneyStart = homeCoordinate;
-    fakeLocationManager.fakeJourneyEnd = workCoordinate;
+    if (fakeDirectionOfTravel>0){
+        fakeLocationManager.fakeJourneyStart = homeCoordinate;
+        fakeLocationManager.fakeJourneyEnd = workCoordinate;
+    }
+    else{
+        fakeLocationManager.fakeJourneyStart = workCoordinate;
+        fakeLocationManager.fakeJourneyEnd = homeCoordinate;
+    }
     fakeLocationManager.speed = TRAIN_SPEED;
+    
 #endif
+    
+    
     [locationManager startJourney];
     
     // Set direction of travel.
@@ -384,5 +406,21 @@
     WTContentBlob * blob = [contentBlobs objectAtIndex:index];
     return [playedBlobs containsObject:blob.chapter];
 }
+
+-(WTContentBlob*) nextBlobFrom:(WTContentBlob*) blob
+{
+    NSInteger index = [contentBlobs indexOfObject:blob];
+    NSInteger next = (index+1) % [contentBlobs count];
+    return [self contentAtIndex:next];
+    
+}
+-(WTContentBlob*) previousBlobFrom:(WTContentBlob*) blob
+{
+    NSInteger index = [contentBlobs indexOfObject:blob];
+    NSInteger prev = (index-1) % [contentBlobs count];
+    return [self contentAtIndex:prev];
+
+}
+
 
 @end

@@ -17,6 +17,14 @@
 		6D4B67DA187073630019B046 /* WTTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B67D9187073630019B046 /* WTTabBarController.m */; };
 		6D4B67DF18707AA00019B046 /* WTJourneyChooserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B67DE18707AA00019B046 /* WTJourneyChooserController.m */; };
 		6D4B67E1187084570019B046 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D4B67E0187084570019B046 /* stations.json */; };
+		6D7C0C9818FA90E20051E6F7 /* WTHallmarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7C0C9718FA90E20051E6F7 /* WTHallmarkView.m */; };
+		6D7C0C9A18FA91B40051E6F7 /* WTHallmarkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D7C0C9918FA91B40051E6F7 /* WTHallmarkView.xib */; };
+		6D7C0C9D18FA94B60051E6F7 /* NSArray+UIViewSorting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7C0C9C18FA94B60051E6F7 /* NSArray+UIViewSorting.m */; };
+		6D7C0C9F18FA97160051E6F7 /* HallmarkPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D7C0C9E18FA97160051E6F7 /* HallmarkPlaceholder.png */; };
+		6D7C0CA318FA9C6A0051E6F7 /* WTChapterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7C0CA118FA9C6A0051E6F7 /* WTChapterTableViewCell.m */; };
+		6D7C0CA418FA9C6A0051E6F7 /* WTChapterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D7C0CA218FA9C6A0051E6F7 /* WTChapterTableViewCell.xib */; };
+		6D7C0CA618FAA89F0051E6F7 /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D7C0CA518FAA89F0051E6F7 /* line.png */; };
+		6D7C0CA918FAB28A0051E6F7 /* WTIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7C0CA818FAB28A0051E6F7 /* WTIntroViewController.m */; };
 		6D941C0F18F5C14900B42A1F /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D941C0E18F5C14900B42A1F /* compass.png */; };
 		6D941C1118F5C15900B42A1F /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D941C1018F5C15900B42A1F /* house.png */; };
 		6D941C1318F5C17500B42A1F /* newspaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D941C1218F5C17500B42A1F /* newspaper.png */; };
@@ -88,6 +96,18 @@
 		6D4B67DD18707AA00019B046 /* WTJourneyChooserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTJourneyChooserController.h; sourceTree = "<group>"; };
 		6D4B67DE18707AA00019B046 /* WTJourneyChooserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTJourneyChooserController.m; sourceTree = "<group>"; };
 		6D4B67E0187084570019B046 /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
+		6D7C0C9618FA90E20051E6F7 /* WTHallmarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHallmarkView.h; sourceTree = "<group>"; };
+		6D7C0C9718FA90E20051E6F7 /* WTHallmarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHallmarkView.m; sourceTree = "<group>"; };
+		6D7C0C9918FA91B40051E6F7 /* WTHallmarkView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTHallmarkView.xib; sourceTree = "<group>"; };
+		6D7C0C9B18FA94B60051E6F7 /* NSArray+UIViewSorting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+UIViewSorting.h"; sourceTree = "<group>"; };
+		6D7C0C9C18FA94B60051E6F7 /* NSArray+UIViewSorting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+UIViewSorting.m"; sourceTree = "<group>"; };
+		6D7C0C9E18FA97160051E6F7 /* HallmarkPlaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HallmarkPlaceholder.png; sourceTree = "<group>"; };
+		6D7C0CA018FA9C6A0051E6F7 /* WTChapterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTChapterTableViewCell.h; sourceTree = "<group>"; };
+		6D7C0CA118FA9C6A0051E6F7 /* WTChapterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTChapterTableViewCell.m; sourceTree = "<group>"; };
+		6D7C0CA218FA9C6A0051E6F7 /* WTChapterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTChapterTableViewCell.xib; sourceTree = "<group>"; };
+		6D7C0CA518FAA89F0051E6F7 /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
+		6D7C0CA718FAB28A0051E6F7 /* WTIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTIntroViewController.h; sourceTree = "<group>"; };
+		6D7C0CA818FAB28A0051E6F7 /* WTIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTIntroViewController.m; sourceTree = "<group>"; };
 		6D941C0E18F5C14900B42A1F /* compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass.png; sourceTree = "<group>"; };
 		6D941C1018F5C15900B42A1F /* house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = house.png; sourceTree = "<group>"; };
 		6D941C1218F5C17500B42A1F /* newspaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newspaper.png; sourceTree = "<group>"; };
@@ -190,12 +210,20 @@
 				6DA56F6D186DB35D007D2ABA /* WTMapViewController.m */,
 				6D4B67D5187070340019B046 /* WTContentViewController.h */,
 				6D4B67D6187070340019B046 /* WTContentViewController.m */,
-				6D4B67DD18707AA00019B046 /* WTJourneyChooserController.h */,
-				6D4B67DE18707AA00019B046 /* WTJourneyChooserController.m */,
 				6D19A6E91871D8E200BDE5B0 /* WTContentListViewController.h */,
 				6D19A6EA1871D8E200BDE5B0 /* WTContentListViewController.m */,
+				6D4B67DD18707AA00019B046 /* WTJourneyChooserController.h */,
+				6D4B67DE18707AA00019B046 /* WTJourneyChooserController.m */,
+				6D7C0CA018FA9C6A0051E6F7 /* WTChapterTableViewCell.h */,
+				6D7C0CA118FA9C6A0051E6F7 /* WTChapterTableViewCell.m */,
+				6D7C0CA218FA9C6A0051E6F7 /* WTChapterTableViewCell.xib */,
 				6D941C1A18F5C41A00B42A1F /* WTTimeDayChooserViewController.h */,
 				6D941C1B18F5C41A00B42A1F /* WTTimeDayChooserViewController.m */,
+				6D7C0C9618FA90E20051E6F7 /* WTHallmarkView.h */,
+				6D7C0C9718FA90E20051E6F7 /* WTHallmarkView.m */,
+				6D7C0C9918FA91B40051E6F7 /* WTHallmarkView.xib */,
+				6D7C0CA718FAB28A0051E6F7 /* WTIntroViewController.h */,
+				6D7C0CA818FAB28A0051E6F7 /* WTIntroViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -228,9 +256,11 @@
 		6D7762B718F5432200F0D66A /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				6D7C0C9E18FA97160051E6F7 /* HallmarkPlaceholder.png */,
 				6D941C1018F5C15900B42A1F /* house.png */,
 				6D941C1818F5C2AB00B42A1F /* clock.png */,
 				6D941C1418F5C1D500B42A1F /* windmill.png */,
+				6D7C0CA518FAA89F0051E6F7 /* line.png */,
 				6D941C1618F5C1E300B42A1F /* text.png */,
 				6D941C1218F5C17500B42A1F /* newspaper.png */,
 				6D941C0E18F5C14900B42A1F /* compass.png */,
@@ -335,6 +365,8 @@
 				6DB5FACB18EEA6B1008A521A /* L1UserLocationAnnotation.m */,
 				6D19A6DE1871C74400BDE5B0 /* WTUtils.h */,
 				6D19A6DF1871C74400BDE5B0 /* WTUtils.m */,
+				6D7C0C9B18FA94B60051E6F7 /* NSArray+UIViewSorting.h */,
+				6D7C0C9C18FA94B60051E6F7 /* NSArray+UIViewSorting.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -426,11 +458,15 @@
 				6DA56F73186DB35D007D2ABA /* Images.xcassets in Resources */,
 				6DA56F62186DB35D007D2ABA /* InfoPlist.strings in Resources */,
 				6D941C1118F5C15900B42A1F /* house.png in Resources */,
+				6D7C0C9A18FA91B40051E6F7 /* WTHallmarkView.xib in Resources */,
 				6DA56F6B186DB35D007D2ABA /* Main.storyboard in Resources */,
 				6DB5FACF18EEAA90008A521A /* fake-user-location.png in Resources */,
 				6D4B67D0186F7D080019B046 /* Main-iPad.storyboard in Resources */,
 				6D19A6E51871D56400BDE5B0 /* blobs.json in Resources */,
 				6D941C1318F5C17500B42A1F /* newspaper.png in Resources */,
+				6D7C0C9F18FA97160051E6F7 /* HallmarkPlaceholder.png in Resources */,
+				6D7C0CA418FA9C6A0051E6F7 /* WTChapterTableViewCell.xib in Resources */,
+				6D7C0CA618FAA89F0051E6F7 /* line.png in Resources */,
 				6D941C1718F5C1E300B42A1F /* text.png in Resources */,
 				6D4B67E1187084570019B046 /* stations.json in Resources */,
 				6D941C0F18F5C14900B42A1F /* compass.png in Resources */,
@@ -462,12 +498,16 @@
 				6DA56F64186DB35D007D2ABA /* main.m in Sources */,
 				6D19A6E01871C74400BDE5B0 /* WTUtils.m in Sources */,
 				6D4B67D7187070340019B046 /* WTContentViewController.m in Sources */,
+				6D7C0C9D18FA94B60051E6F7 /* NSArray+UIViewSorting.m in Sources */,
 				6D19A6EB1871D8E200BDE5B0 /* WTContentListViewController.m in Sources */,
+				6D7C0CA918FAB28A0051E6F7 /* WTIntroViewController.m in Sources */,
 				6DA56FA8186DBC6D007D2ABA /* WTNode.m in Sources */,
 				6D941C1C18F5C41A00B42A1F /* WTTimeDayChooserViewController.m in Sources */,
 				6DA56F68186DB35D007D2ABA /* WTAppDelegate.m in Sources */,
+				6D7C0CA318FA9C6A0051E6F7 /* WTChapterTableViewCell.m in Sources */,
 				6DA56FA0186DB679007D2ABA /* WTContentBlob.m in Sources */,
 				6DE44A1318F099F70063A003 /* L1Weather.m in Sources */,
+				6D7C0C9818FA90E20051E6F7 /* WTHallmarkView.m in Sources */,
 				6D4B67D3186F7DF10019B046 /* WTStoryManager.m in Sources */,
 				6DE44A0718F00DDD0063A003 /* WTRealLocationManager.m in Sources */,
 				6DE44A0A18F013E30063A003 /* WTLocationManager.m in Sources */,
@@ -601,12 +641,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Joe ZUNTZ (BPZ2F9SP9F)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Writer on the Train/Writer on the Train-Prefix.pch";
 				INFOPLIST_FILE = "Writer on the Train/Writer on the Train-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-Wno-undeclared-selector";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "145FE07B-A9B3-46FC-BC06-D7CAB61BED70";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "/Users/jaz/src/amblr/projects/Amblr-Core/Amblr-Core";
@@ -620,12 +662,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Joe ZUNTZ (BPZ2F9SP9F)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Writer on the Train/Writer on the Train-Prefix.pch";
 				INFOPLIST_FILE = "Writer on the Train/Writer on the Train-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-Wno-undeclared-selector";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "145FE07B-A9B3-46FC-BC06-D7CAB61BED70";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "/Users/jaz/src/amblr/projects/Amblr-Core/Amblr-Core";

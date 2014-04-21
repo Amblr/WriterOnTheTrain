@@ -14,8 +14,11 @@
 {
     WTStoryManager * storyManager;
     WTMapViewController * mapViewController;
+    BOOL shownIntro;
     
 }
+- (IBAction)unwindIntroView:(UIStoryboardSegue *)unwindSegue;
+
 @property (retain) WTStoryManager * storyManager;
 @property (retain) WTMapViewController * mapViewController;
 @end

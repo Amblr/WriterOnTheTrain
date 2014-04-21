@@ -69,8 +69,6 @@
     NSString * latString = [[dictionary objectForKey:@"Lat"] lowercaseString];
     NSString * lonString = [[dictionary objectForKey:@"Lon"] lowercaseString];
     if ([lonString length]==0){
-        NSLog(@"lonString=%@",lonString);
-        NSLog(@"latString=%@",lonString);
         blob.coordinate = CLLocationCoordinate2DMake(NAN, NAN);
     }
     else{

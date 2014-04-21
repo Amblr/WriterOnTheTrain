@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 @class WTTabBarController;
+@class WTStoryManager;
 
 @interface WTAppDelegate : UIResponder <UIApplicationDelegate>
 {
     WTTabBarController * tabBarController;
+    WTStoryManager * storyManager;
 }
 @property (strong, nonatomic) UIWindow *window;
-
+@property (retain) WTStoryManager * storyManager;
 @end

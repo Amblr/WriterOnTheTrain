@@ -35,6 +35,9 @@
     userLocationView.image = [UIImage imageNamed:@"fake-user-location.png"];
 #endif
 	// Do any additional setup after loading the view, typically from a nib.
+    [mapView setRegion:MKCoordinateRegionMake(CLLocationCoordinate2DMake(51.444322, -0.905254), MKCoordinateSpanMake(4.0, 4.0))];
+    returning=NO;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,7 +67,23 @@
 {
     WTTabBarController * root = (WTTabBarController*) self.parentViewController;
     WTStoryManager * storyManager = root.storyManager;
-    [storyManager startJourney];
+    BOOL ok = [storyManager startJourney];
+    
+    if (!ok) return;  // If we are not ready to simulate the journeu yet do not change the button information
+    // Update the button for next time
+    UIButton * button = (UIButton*) sender;
+    if (storyManager.fakeDirectionOfTravel<0){
+        [button setTitle:@"Simulate Journey" forState:UIControlStateNormal];
+    }
+    else{
+        [button setTitle:@"Simulate Return" forState:UIControlStateNormal];
+        
+    }
+
+    // Flip the direction of travel
+    storyManager.fakeDirectionOfTravel = -storyManager.fakeDirectionOfTravel;
+    NSLog(@"Setting fake direction of travel to %d", storyManager.fakeDirectionOfTravel);
+    
 }
 
 -(MKAnnotationView*) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
@@ -77,7 +96,6 @@
 
 -(void) locationUpdate:(CLLocation *)location
 {
-    NSLog(@"Location: %f  %f", location.coordinate.longitude, location.coordinate.latitude);
     if (CLLocationCoordinate2DIsValid(location.coordinate)) {
         [userLocation setCoordinate:location.coordinate];
     }

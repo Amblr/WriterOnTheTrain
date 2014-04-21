@@ -8,6 +8,7 @@
 
 #import "WTContentViewController.h"
 #import "WTContentBlob.h"
+#import "WTTabBarController.h"
 
 @interface WTContentViewController ()
 
@@ -24,13 +25,15 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     titleLabel.text = self.blob.title;
     textView.text = self.blob.text;
-    
+    textView.textAlignment = NSTextAlignmentJustified;
+    textView.font = [UIFont fontWithName:@"Times New Roman" size:17.0];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,6 +57,39 @@
 -(IBAction)dismissContentView
 {
     [self dismissViewControllerAnimated:YES completion:^(void){}];
+}
+
+-(IBAction)lastChapter:(id)sender
+{
+    WTTabBarController * tabBarController =  (WTTabBarController*) self.view.window.rootViewController;
+    WTStoryManager * storyManager = tabBarController.storyManager;
+    WTContentBlob *newBlob = [storyManager previousBlobFrom:self.blob];
+    self.blob = newBlob;
+    titleLabel.text = self.blob.title;
+    textView.text = self.blob.text;
+
+}
+
+-(IBAction)nextChapter:(id)sender
+{
+    WTTabBarController * tabBarController =  (WTTabBarController*) self.view.window.rootViewController;
+    WTStoryManager * storyManager = tabBarController.storyManager;
+    WTContentBlob *newBlob = [storyManager nextBlobFrom:self.blob];
+    self.blob = newBlob;
+    titleLabel.text = self.blob.title;
+    textView.text = self.blob.text;
+    
+}
+
+-(BOOL) buttonsVisible
+{
+    return buttonsVisible;
+}
+-(void) setButtonsVisible:(BOOL)buttonsVisible_
+{
+    buttonsVisible = buttonsVisible_;
+    nextButton.hidden=!buttonsVisible;
+    lastButton.hidden=!buttonsVisible;
 }
 
 @end

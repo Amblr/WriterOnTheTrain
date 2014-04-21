@@ -85,6 +85,7 @@
 //    return find_rotated_coordinate(axisVector, originVector, radians);
 }
 
+
 -(void) updateFakeLocation:(NSTimer*) timer
 {
     CLLocationCoordinate2D pos;
@@ -118,5 +119,11 @@
 
 }
 
+
+-(void) enterBackground
+{
+//    [timer invalidate];
+    
+}
 
 @end

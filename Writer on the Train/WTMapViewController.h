@@ -15,6 +15,7 @@
     IBOutlet MKMapView * mapView;
     MKPointAnnotation * userLocation;
     MKAnnotationView * userLocationView;
+    BOOL returning;
     
 }
 -(IBAction)startJourney:(id)sender;

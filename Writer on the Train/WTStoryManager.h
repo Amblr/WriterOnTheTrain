@@ -52,6 +52,7 @@
     
     // Some fake information
     NSDate * fakeDate;
+    WTTravelDirection fakeDirectionOfTravel;
     
 
 
@@ -80,8 +81,10 @@
 -(void) displayContentFromBackground:(NSDictionary*) info;
 -(BOOL) contentAtIndexIsAvailable:(NSInteger) index;
 -(void) locationUpdate:(CLLocation*) location;
+-(WTContentBlob*) nextBlobFrom:(WTContentBlob*) blob;
+-(WTContentBlob*) previousBlobFrom:(WTContentBlob*) blob;
 
-
+-(void) enableBackgroundMode;
 
 @property (retain) WTContentBlob * scheduledContentBlob;
 
@@ -90,5 +93,6 @@
 @property (assign) CLLocationCoordinate2D workCoordinate;
 @property (retain) WTJourney * journey;
 @property (retain) NSDate * fakeDate;
+@property (assign) WTTravelDirection fakeDirectionOfTravel;
 
 @end

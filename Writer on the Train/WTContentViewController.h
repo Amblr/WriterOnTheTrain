@@ -14,9 +14,19 @@
     IBOutlet UILabel * titleLabel;
     IBOutlet UITextView * textView;
     WTContentBlob * _blob;
+    
+    IBOutlet UIButton * nextButton;
+    IBOutlet UIButton * lastButton;
+    
+    BOOL buttonsVisible;
+
 }
 
 -(void) setContentBlob:(WTContentBlob*) blob;
 -(IBAction)dismissContentView;
 @property (retain) WTContentBlob * blob;
+-(IBAction)lastChapter:(id)sender;
+-(IBAction)nextChapter:(id)sender;
+@property (assign) BOOL buttonsVisible;
+
 @end

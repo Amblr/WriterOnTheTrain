@@ -20,6 +20,7 @@
 -(void) chooseStationRequest;
 -(BOOL) displayContent:(WTContentBlob*) content;
 -(void) locationUpdate:(CLLocation*) location;
+-(void) didStartJourney:(WTJourney*)journey;
 
 @end
 
@@ -73,8 +74,10 @@
 -(void) displayContent:(WTContentBlob*) content;
 @property (retain) id delegate;
 
-//-(WTContentBlob*) validContentMatchingName:(NSString*)name atCoordinate:(CLLocationCoordinate2D) coordinate;
-//-(WTContentBlob*) nextValidContentAtCoordinate:(CLLocationCoordinate2D) coordinate;
+
+-(WTContentBlob*) selectContentForJourney:(WTJourney*) journey;
+
+
 -(NSInteger) contentCount;
 -(NSString*) titleForContentAtIndex:(NSInteger) index;
 -(WTContentBlob*) contentAtIndex:(NSInteger) index;

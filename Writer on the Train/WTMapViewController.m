@@ -71,6 +71,8 @@
     
     if (!ok) return;  // If we are not ready to simulate the journeu yet do not change the button information
     // Update the button for next time
+
+#if (!REAL_LOCATION)
     UIButton * button = (UIButton*) sender;
     if (storyManager.fakeDirectionOfTravel<0){
         [button setTitle:@"Simulate Journey" forState:UIControlStateNormal];
@@ -79,10 +81,12 @@
         [button setTitle:@"Simulate Return" forState:UIControlStateNormal];
         
     }
-
     // Flip the direction of travel
     storyManager.fakeDirectionOfTravel = -storyManager.fakeDirectionOfTravel;
     NSLog(@"Setting fake direction of travel to %d", storyManager.fakeDirectionOfTravel);
+#else
+
+#endif
     
 }
 

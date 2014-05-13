@@ -1,20 +1,19 @@
 //
-//  WTTimeDayChooserViewController.m
+//  WTAudioViewController.m
 //  Writer on the Train
 //
-//  Created by Joe Zuntz on 09/04/2014.
+//  Created by Joe Zuntz on 06/05/2014.
 //  Copyright (c) 2014 Joe Zuntz. All rights reserved.
 //
 
-#import "WTTimeDayChooserViewController.h"
-#import "WTTabBarController.h"
+#import "WTAudioViewController.h"
 
-
-@interface WTTimeDayChooserViewController ()
+@interface WTAudioViewController ()
 
 @end
 
-@implementation WTTimeDayChooserViewController
+@implementation WTAudioViewController
+@synthesize  blob;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,13 +46,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
--(IBAction)chooseDateTime:(id)sender
-{
-    UIDatePicker * picker = (UIDatePicker*) sender;
-    WTTabBarController * root = (WTTabBarController*) self.view.window.rootViewController;
-    WTStoryManager * story = root.storyManager;
-    story.fakeDate = picker.date;
-}
 
 @end

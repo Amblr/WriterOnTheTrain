@@ -7,6 +7,7 @@
 //
 
 #import "WTContentBlob.h"
+#import "L1Logger.h"
 
 @implementation WTContentBlob
 @synthesize title;

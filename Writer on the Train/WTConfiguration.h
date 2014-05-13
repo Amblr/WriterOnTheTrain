@@ -36,13 +36,8 @@
 
 #define WTDEBUG YES
 
-#ifdef WTDEBUG
-#   define WTDEBUGLOG(fmt, ...) NSLog(fmt, ##__VA_ARGS__)
-#else
-#   define WTDEBUGLOG(...)
-#endif
 
-#define FAKE_LOCATION_UPDATE_MINUTES 1.0
+#define FAKE_LOCATION_UPDATE_MINUTES 4.0
 #define RADIUS_OF_EARTH_METERS 6378100.0
 
 

@@ -10,7 +10,7 @@
 #import "WTStoryManager.h"
 @class WTMapViewController;
 
-@interface WTTabBarController : UITabBarController<WTStoryManagerDelegate>
+@interface WTTabBarController : UITabBarController<WTStoryManagerDelegate, UITabBarControllerDelegate>
 {
     WTStoryManager * storyManager;
     WTMapViewController * mapViewController;

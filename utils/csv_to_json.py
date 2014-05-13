@@ -3,7 +3,6 @@ import csv
 import sys
 import json
 import numpy as np
-import random
 import collections
 
 
@@ -24,7 +23,7 @@ def get_day_mask(blob):
 
 	return mask
 
-def transform(blob):
+def transform(blob, ignore_position_missing):
 	global fake_chapter
 	for (k,v) in blob.items():
 		blob[k] = v.strip()
@@ -33,7 +32,8 @@ def transform(blob):
 	#get day of week mask
 	error = []
 	if not blob['Position'].strip():
-		error.append("Entry has no position (chapter number)")
+		if not ignore_position_missing:
+			error.append("Entry has no position (chapter number)")
 		blob['Position'] = str(fake_chapter)
 		fake_chapter += 0.1
 
@@ -53,13 +53,13 @@ def transform(blob):
 
 
 	if not blob.get('Time of Day'):
-		blob['Time of Day'] = random.choice(['any'])
+		blob['Time of Day'] = 'any'
 
 	if not blob.get('Window'):
-		blob['Window'] = random.choice(['either','either','left','right'])
+		blob['Window'] = 'either'
 
 	if not blob.get('Direction of Travel'):
-		blob['Direction of Travel'] = random.choice(['West > East', 'East > West'])
+		blob['Direction of Travel'] = 'any'
 	blob['Direction of Travel'] = blob.get('Direction of Travel')[-4:]
 
 	if not blob.get("Phase of Journey"):
@@ -87,12 +87,12 @@ def check_unique_chapters(blobs):
 		if len(titles)>1:
 			print 'Position %s used more than once: %s' % (pos, ', '.join(titles))
 
-
-def csv_to_json(csv_filename, json_filename):
+def csv_to_json(csv_filename, json_filename, ignore_position_missing):
 	blobs = list(csv.DictReader(open(csv_filename)))
+	print 'Looking at %d database entries in file' % len(blobs)
 	valid_blobs = []
 	for b in blobs:
-		error = transform(b)
+		error = transform(b, ignore_position_missing)
 		if not error:
 			valid_blobs.append(b)
 			# for k,v in b.items():
@@ -110,4 +110,5 @@ def csv_to_json(csv_filename, json_filename):
 
 
 if __name__ == '__main__':
-	csv_to_json(sys.argv[1],sys.argv[2])
+	i_hate_writers = len(sys.argv)>3 and ('--i-hate-writers' in sys.argv)
+	csv_to_json(sys.argv[1],sys.argv[2], i_hate_writers)

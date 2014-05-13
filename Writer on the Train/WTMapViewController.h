@@ -13,6 +13,7 @@
 @interface WTMapViewController : UIViewController<MKMapViewDelegate>
 {
     IBOutlet MKMapView * mapView;
+    IBOutlet UILabel * statusLabel;
     MKPointAnnotation * userLocation;
     MKAnnotationView * userLocationView;
     BOOL returning;

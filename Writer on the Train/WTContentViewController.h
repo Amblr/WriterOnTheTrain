@@ -27,6 +27,7 @@
 @property (retain) WTContentBlob * blob;
 -(IBAction)lastChapter:(id)sender;
 -(IBAction)nextChapter:(id)sender;
+-(IBAction)audioScreen:(id)sender;
 @property (assign) BOOL buttonsVisible;
 
 @end

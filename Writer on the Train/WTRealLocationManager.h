@@ -12,12 +12,17 @@
 
 @class WTStoryManager;
 
-
 @interface WTRealLocationManager : WTLocationManager<CLLocationManagerDelegate>
 {
     CLLocationManager * locationManager;
     NSTimeInterval highResolutionLocationInterval;
     BOOL inHighResolutionRegion;
     NSTimer * timer;
+    CLLocationCoordinate2D targetCoordinate;
+    NSInteger mode;
+    NSDate * modeStartTime;
 }
+@property (retain) NSTimer * timer;
+@property (assign) CLLocationCoordinate2D targetCoordinate;
+@property (retain) NSDate * modeStartTime;
 @end

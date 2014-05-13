@@ -73,6 +73,35 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="-1281" y="-1256"/>
         </scene>
+        <!--Log View Controller - Log-->
+        <scene sceneID="kbB-Ut-gqG">
+            <objects>
+                <tableViewController id="D0d-UU-SXf" customClass="L1LogViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="I3I-22-O7a">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="mCd-O7-Da7">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mCd-O7-Da7" id="8bw-Qi-WU2">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="D0d-UU-SXf" id="dFf-S4-Ska"/>
+                            <outlet property="delegate" destination="D0d-UU-SXf" id="op5-Vm-Ooa"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Log" image="newspaper.png" id="cgr-Uo-3u2"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Koz-ve-frn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1530" y="-639"/>
+        </scene>
         <!--Map View Controller - Map-->
         <scene sceneID="W3I-pn-N6e">
             <objects>
@@ -98,12 +127,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <action selector="startJourney:" destination="CZ4-MO-1fc" eventType="touchUpInside" id="cPS-Gc-Bmu"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Journey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HrU-xJ-EHP">
+                                <rect key="frame" x="0.0" y="404" width="320" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Journey" image="compass.png" id="u1e-5L-l1D"/>
                     <connections>
                         <outlet property="mapView" destination="flu-Wn-GSc" id="HzO-d6-hSi"/>
+                        <outlet property="statusLabel" destination="HrU-xJ-EHP" id="afq-As-XXz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh2-T1-AhA" sceneMemberID="firstResponder"/>
@@ -205,7 +243,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Npx-U0-QPZ">
-                                <rect key="frame" x="20" y="40.000003126165701" width="280" height="348"/>
+                                <rect key="frame" x="20" y="40.000003544191273" width="280" height="348"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -316,13 +354,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <segue destination="QUy-BD-bpt" kind="relationship" relationship="viewControllers" id="M8t-EP-wfW"/>
                         <segue destination="uCU-S4-HG5" kind="relationship" relationship="viewControllers" id="u7x-gA-O3h"/>
                         <segue destination="P3b-x7-iiE" kind="relationship" relationship="viewControllers" id="3T4-BW-T4C"/>
-                        <segue destination="4qd-51-sRV" kind="relationship" relationship="viewControllers" id="tsi-sp-Pyj"/>
                         <segue destination="Mrh-Ji-YaU" kind="modal" identifier="intro" modalTransitionStyle="crossDissolve" id="JIs-y9-Htt"/>
+                        <segue destination="D0d-UU-SXf" kind="relationship" relationship="viewControllers" id="Pwj-BN-YDX"/>
+                        <segue destination="4qd-51-sRV" kind="relationship" relationship="viewControllers" id="Nzl-Eu-gn0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1385" y="136"/>
+            <point key="canvasLocation" x="-1709" y="136"/>
         </scene>
         <!--Intro View Controller-->
         <scene sceneID="Y3l-ic-rcr">
@@ -377,6 +416,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="compass.png" width="30" height="30"/>
         <image name="house.png" width="30" height="30"/>
         <image name="line" width="506" height="26"/>
+        <image name="newspaper.png" width="30" height="30"/>
         <image name="text.png" width="30" height="30"/>
         <image name="windmill.png" width="30" height="30"/>
     </resources>
@@ -386,6 +426,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Gz7-dj-KVB"/>
+        <segue reference="dY6-t5-Ebc"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,13 +8,15 @@
 
 #import "WTAppDelegate.h"
 #import "WTTabBarController.h"
+#import "L1LogViewController.h"
+
 
 @implementation WTAppDelegate
 @synthesize storyManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+    [L1LogViewController class];
     tabBarController = (WTTabBarController*) self.window.rootViewController;
 
     // Override point for customization after application launch.

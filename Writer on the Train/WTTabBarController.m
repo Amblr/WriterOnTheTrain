@@ -39,6 +39,8 @@
     if (!shownIntro) self.view.hidden=YES;
     storyManager = [[WTStoryManager alloc] init];
     storyManager.delegate = self;
+    self.delegate = self;
+
     
 }
 
@@ -117,6 +119,16 @@
     // Tell the map view to update location
     [mapViewController locationUpdate:location];
     
+}
+
+-(void) didStartJourney:(WTJourney *)journey
+{
+    
+}
+
+-(void) tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    NSLog(@"Selected %@",viewController);
 }
 
 @end

@@ -21,7 +21,7 @@
     return self;
 }
 
--(void) startJourney
+-(void) startJourneyWithContent:(WTContentBlob *)content
 {
     
 }

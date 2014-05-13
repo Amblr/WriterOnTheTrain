@@ -5,10 +5,9 @@
 //  Created by Joe Zuntz on 05/04/2014.
 //
 //
+@import CoreLocation;
 @class WTStoryManager;
-@class CLLocation;
-
-
+@class WTContentBlob;
 
 @protocol WTLocationManagerDelegate <NSObject>
 - (void) locationUpdate:(CLLocation*) location;
@@ -21,7 +20,7 @@
 
 }
 -(id) initWithStoryManager:(id<WTLocationManagerDelegate>) manager;
--(void) startJourney;
+-(void) startJourneyWithTargetCoordinate:(CLLocationCoordinate2D) coordinate;
 -(void) endJourney;
 
 @end

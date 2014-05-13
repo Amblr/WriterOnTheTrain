@@ -99,7 +99,7 @@
     [storyManager locationUpdate:location];
 }
 
--(void) startJourney;
+-(void) startJourneyWithTargetCoordinate:(CLLocationCoordinate2D)coordinate
 {
     if ((!CLLocationCoordinate2DIsValid(self.fakeJourneyStart) || (!CLLocationCoordinate2DIsValid(self.fakeJourneyEnd)) )){
         NSLog(@"Cannot start journey - no destination");
